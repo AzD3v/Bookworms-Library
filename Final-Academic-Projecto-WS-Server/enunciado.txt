@@ -1,0 +1,7 @@
+Objetivo -> Fazer um projeto de classificação de filmes 
+
+Link com toda a informação necessária: http://controlaltdelete.pt/uac/movie/index.php/
+	-> Deve-se implementar os métodos todos com formulários quando aplicável 
+	-> Utilizar validação dos formulários 
+	-> As views utilizadas devem exibir as mensagens de erro ou sucesso conforme aplicável
+
