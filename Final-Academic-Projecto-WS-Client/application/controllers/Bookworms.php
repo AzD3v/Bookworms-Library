@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property string api_url_book
  */
 
-class Book extends CI_Controller
+class Bookworms extends CI_Controller
 {
 
 	/**
@@ -27,7 +27,7 @@ class Book extends CI_Controller
 	var $api_url_book;
 
 	/**
-	 * Book constructor.
+	 * Bookworms constructor.
 	 */
 
 	public function __construct()
