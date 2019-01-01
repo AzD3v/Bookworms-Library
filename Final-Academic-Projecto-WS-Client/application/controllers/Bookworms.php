@@ -46,10 +46,10 @@ class Bookworms extends CI_Controller
 		$this->load->view('bookworms/welcome');
 	}
 
-	function getBook($id = 0)
+	function getBook()
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbook/' . ($id != 0 ? 'id/' . $id : ''));
+		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbook/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {
@@ -62,7 +62,7 @@ class Bookworms extends CI_Controller
 			}
 		}
 
-		$data = array(
+		$data = array (
 			'books' => json_decode($response, true)
 		);
 		$this->load->view('geral/header');
@@ -93,44 +93,44 @@ class Bookworms extends CI_Controller
 			'books' => json_decode($response, true)
 		);
 
-		exit();
 		$this->load->view('geral/header');
-		$this->load->view('bookworms/addbook', $data);
+		$this->load->view('bookworms/add_book_success', $data);
 		$this->load->view('geral/footer');
 	}
 
-	function addMovieForm()
+	function addBookForm()
 	{
 		$this->load->view('geral/header.php');
 		$this->load->view('bookworms/add_book_form');
 		$this->load->view('geral/footer.php');
 	}
 
-	function validateNewMovie()
+	function validateNewBook()
 	{
-		/* $this->form_validation->set_rules('movieTitle', 'Title', 'required');
-		$this->form_validation->set_rules('movieYear', 'Movie Year', 'required');
-		$this->form_validation->set_rules('movieDescription', 'Movie Description');
-		$this->form_validation->set_rules('MovieImdbId', 'IMDb ID of the Movie');
-		$this->form_validation->set_rules('movieUserId', 'User ID', 'required');
-		$this->form_validation->set_rules('movieGenreId', 'Genre ID', 'required');
+		$this->form_validation->set_rules('bookName', 'Book Name', 'required|alpha_numeric');
+		$this->form_validation->set_rules('bookAuthor', 'Book Author', 'required');
+		$this->form_validation->set_rules('bookGenreId', 'Book Genre ID', 'required|numeric');
+		$this->form_validation->set_rules('bookDescription', 'Book Description', 'required');
+		$this->form_validation->set_rules('bookIsbn', 'ISBN (International Standard Book Number) of the book',
+											'required|alpha_numeric');
+		$this->form_validation->set_rules('bookRegister', 'Who is registering this book?', 'required');
 
 		if ($this->form_validation->run() === TRUE) {
 			$post_data = array(
-				'title' => $this->input->post('movieTitle'),
-				'year' => $this->input->post('movieYear'),
-				'description' => $this->input->post('movieDescription'),
-				'imdb_id' => $this->input->post('movieImdbId'),
-				'user_id' => $this->input->post('movieUserId'),
-				'gender_id' => $this->input->post('movieGenreId')
+				'name' => $this->input->post('bookName'),
+				'author' => $this->input->post('bookAuthor'),
+				'genre_id' => $this->input->post('bookGenreId'),
+				'description' => $this->input->post('bookDescription'),
+				'isbn' => $this->input->post('bookIsbn'),
+				'register' => $this->input->post('bookRegister')
 			);
 
-			if (isset($_FILES) && $_FILES['userfile']['error'] == 0) {
+			if (isset($_FILES) && $_FILES['bookCover']['error'] == 0) {
 				$config['upload_path'] = 'upload/';
 				$config['allowed_types'] = '*';
 				$this->load->library('upload', $config);
 
-				if (!$this->upload->do_upload('userfile')) {
+				if (!$this->upload->do_upload('bookCover')) {
 					$data = array(
 						'message' => $this->upload->display_errors()
 					);
@@ -139,23 +139,22 @@ class Bookworms extends CI_Controller
 					$this->load->view('geral/footer');
 				} else {
 					$upload_data = $this->upload->data();
-					// print_r($upload_data); exit;
-					$post_data['userfile'] = base64_encode(file_get_contents($upload_data['full_path'])
+					$post_data['bookCover'] = base64_encode(file_get_contents($upload_data['full_path'])
 					);
 				}
 			}
 			else
 			{
-				echo "deu erro a fazer upload";
+				echo "Error while uploading cover!";
 				exit();
 			}
 
-			$this->addMovie($post_data);
+			$this->addBook($post_data);
 		}
 		else
 		{
-			$this->addMovieForm();
-		} */
+			$this->addBookForm();
+		}
 
 	}
 

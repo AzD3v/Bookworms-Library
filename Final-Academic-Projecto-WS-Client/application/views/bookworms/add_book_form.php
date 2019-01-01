@@ -1,4 +1,4 @@
-<?php echo form_open_multipart("Bookworms/validate_new_book",'role="form" class="form-horizontal"');?>
+<?php echo form_open_multipart("Bookworms/validateNewBook",'role="form" class="form-horizontal"');?>
 
 	<div class="row">
 		<div class="col col-lg-12">
