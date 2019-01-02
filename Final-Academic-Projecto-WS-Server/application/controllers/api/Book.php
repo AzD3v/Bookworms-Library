@@ -27,10 +27,7 @@ class Book extends REST_Controller {
         parent::__construct();
 
         $this->load->model('api/user_model');
-
     }
-    // To access:
-    // http://localhost/Universidade/Web-Services/Academic-Project-1/index.php/api/movie/getmovie
 
     function addBook_post()
     {
@@ -78,5 +75,4 @@ class Book extends REST_Controller {
 
     }
 
-   
 }
