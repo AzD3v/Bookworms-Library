@@ -34,6 +34,7 @@ class Bookworms extends CI_Controller
 	{
 		parent::__construct();
 		$this->api_url_book = 'http://localhost/Universidade/Web-Services/Academic-Project-1/index.php/api/book/';
+
 		// Helpers
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -46,7 +47,7 @@ class Bookworms extends CI_Controller
 		$this->load->view('bookworms/welcome');
 	}
 
-	function getBook()
+	function getBooks()
 	{
 		$con = curl_init();
 		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbook/');
@@ -66,7 +67,32 @@ class Bookworms extends CI_Controller
 			'books' => json_decode($response, true)
 		);
 		$this->load->view('geral/header');
-		$this->load->view('bookworms/getbook', $data);
+		$this->load->view('bookworms/getbooks', $data);
+		$this->load->view('geral/footer');
+
+	}
+
+	function getBookInfo() // TODO: CODE THIS
+	{
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbook/');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($con);
+		if (!curl_errno($con)) {
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)) {
+				case 200:
+					break;
+				default:
+					echo "Unexpected HTTP code: ", $http_code, "\n";
+					exit;
+			}
+		}
+
+		$data = array (
+			'books' => json_decode($response, true)
+		);
+		$this->load->view('geral/header');
+		$this->load->view('bookworms/getbooks', $data);
 		$this->load->view('geral/footer');
 
 	}
@@ -157,7 +183,5 @@ class Bookworms extends CI_Controller
 		}
 
 	}
-
-
 
 }
