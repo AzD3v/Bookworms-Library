@@ -48,10 +48,12 @@ class User_model extends CI_Model {
         return $users;
     }
 
-    function getUser()
-    {
+    function getUser($id)
+    {   
         $this->db->select("u.name, u.email");
         $this->db->from('User as u');
+
+        $this->db->where('u.id', $id);
         
         $this->db->group_by('u.name');
         
