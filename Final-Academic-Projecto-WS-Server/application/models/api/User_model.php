@@ -32,20 +32,14 @@ class User_model extends CI_Model {
         return $user_id;
     }
 
-    function getUsers($id = 0)
+    function getUsers()
     {
-        $this->db->select("u.id, u.name, u.email, u.password, u.profile,
-            u.birthdate, u.status, u.name");
+        $this->db->select("u.name, u.email");
         $this->db->from('User as u');
         
-        if ($id != 0)
-            $this->db->where('u.id', $id);
-
-        $this->db->group_by('u.id, u.name, u.email, u.password, u.profile,
-        u.birthdate, u.status, u.name');
+        $this->db->group_by('u.name');
         
         $query = $this->db->get();
-        // echo $this->db->last_query(); exit();
 
         $users = array();
         foreach ($query->result() as $t)
@@ -53,5 +47,22 @@ class User_model extends CI_Model {
 
         return $users;
     }
+
+    function getUser()
+    {
+        $this->db->select("u.name, u.email");
+        $this->db->from('User as u');
+        
+        $this->db->group_by('u.name');
+        
+        $query = $this->db->get();
+
+        $users = array();
+        foreach ($query->result() as $t)
+            $users[] = (array) $t;
+
+        return $users;
+    }
+
 
 }

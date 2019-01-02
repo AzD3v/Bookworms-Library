@@ -39,7 +39,7 @@ class User extends REST_Controller {
         if ($id === NULL) {
             $users = $this->user_model->getUsers();
         } else {
-            $users = $this->user_model->getUsers($id);
+            $users = $this->user_model->getUser($id);
         }
         // Set the response and exit
         $this->response($users, REST_Controller::HTTP_OK); // OK (200)
@@ -60,6 +60,16 @@ class User extends REST_Controller {
             'status' => $this->post('status'),
                     
         );
+
+        if($user['profile'] != 'Admin')
+        {
+            $message = [
+                'id' => -3,
+                'message' => 'You must be an admin to register an user'
+            ];
+            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+            return;
+        }
         
         if ($user['name'] == '' || $user['email'] == '' ||
             $user['password'] == '' || $user['profile'] == '' || $user['birthdate'] ==''

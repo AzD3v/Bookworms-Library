@@ -33,8 +33,8 @@ class Bookworms extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->api_url_book = 'http://localhost/Universidade/Web-Services/Academic-Project-1/index.php/api/book/';
 
+		$this->api_url_book = 'http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
 		// Helpers
 		$this->load->helper('url');
 		$this->load->helper('form');

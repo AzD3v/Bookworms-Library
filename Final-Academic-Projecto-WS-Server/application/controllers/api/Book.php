@@ -28,7 +28,8 @@ class Book extends REST_Controller {
 
         $this->load->model('api/user_model');
     }
-
+    //To get here
+    //http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book/addbook
     function addBook_post()
     {
         $book = array(
