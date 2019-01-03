@@ -32,7 +32,7 @@ class User extends REST_Controller {
     // To access:
     // http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/user/getuser
     
-    function getUser_get()
+    function getUser_get($user_id)
     {
         $id = $this->get('id');
 
@@ -60,16 +60,6 @@ class User extends REST_Controller {
             'status' => $this->post('status'),
                     
         );
-
-        if($user['profile'] != 'Admin')
-        {
-            $message = [
-                'id' => -3,
-                'message' => 'You must be an admin to register an user'
-            ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-            return;
-        }
         
         if ($user['name'] == '' || $user['email'] == '' ||
             $user['password'] == '' || $user['profile'] == '' || $user['birthdate'] ==''
