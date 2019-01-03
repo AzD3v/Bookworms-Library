@@ -35,7 +35,7 @@ class Example extends REST_Controller {
 
     public function users_get()
     {
-        // Users from a data store e.g. database
+        // users from a data store e.g. database
         $users = [
             ['id' => 1, 'name' => 'John', 'email' => 'john@example.com', 'fact' => 'Loves coding'],
             ['id' => 2, 'name' => 'Jim', 'email' => 'jim@example.com', 'fact' => 'Developed on CodeIgniter'],

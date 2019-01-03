@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property string api_url_book
  */
 
-class Bookworms extends CI_Controller
+class Book extends CI_Controller
 {
 
 	/**
@@ -27,14 +27,14 @@ class Bookworms extends CI_Controller
 	var $api_url_book;
 
 	/**
-	 * Bookworms constructor.
+	 * Book constructor.
 	 */
 
 	public function __construct()
 	{
 		parent::__construct();
 
-		$this->api_url_book = 'http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
+		$this->api_url_book = 'http://localhost/Book-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
 		// Helpers
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -62,7 +62,7 @@ class Bookworms extends CI_Controller
 			'books' => json_decode($response, true)
 		);
 		$this->load->view('geral/header');
-		$this->load->view('bookworms/getbooks', $data);
+		$this->load->view('book/getbooks', $data);
 		$this->load->view('geral/footer');
 
 	}
@@ -87,7 +87,7 @@ class Bookworms extends CI_Controller
 			'books' => json_decode($response, true)
 		);
 		$this->load->view('geral/header');
-		$this->load->view('bookworms/getbooks', $data);
+		$this->load->view('book/getbooks', $data);
 		$this->load->view('geral/footer');
 
 	}
@@ -115,14 +115,14 @@ class Bookworms extends CI_Controller
 		);
 
 		$this->load->view('geral/header');
-		$this->load->view('bookworms/add_book_success', $data);
+		$this->load->view('book/add_book_success', $data);
 		$this->load->view('geral/footer');
 	}
 
 	function addBookForm()
 	{
 		$this->load->view('geral/header.php');
-		$this->load->view('bookworms/add_book_form');
+		$this->load->view('book/add_book_form');
 		$this->load->view('geral/footer.php');
 	}
 

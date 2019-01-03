@@ -27,14 +27,14 @@ class Users extends CI_Controller
 	var $api_url_users;
 
 	/**
-	 * Bookworms constructor.
+	 * Book constructor.
 	 */
 
 	public function __construct()
 	{
 		parent::__construct();
         
-        $this->api_url_users = 'http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/user/';
+        $this->api_url_users = 'http://localhost/Book-Library/Final-Academic-Projecto-WS-Server/index.php/api/user/';
 
 		// Helpers
 		$this->load->helper('url');
@@ -42,4 +42,10 @@ class Users extends CI_Controller
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 	}
+
+	function addUserForm()
+	{
+		$this->load->view('users/add_user_form');
+	}
+
 }
