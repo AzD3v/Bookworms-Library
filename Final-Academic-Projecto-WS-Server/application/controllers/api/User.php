@@ -74,14 +74,14 @@ class User extends REST_Controller {
             'name' => $this->post('name'),
             'email' => $this->post('email'),
             'password' => $this->post('password'),
-            'profile' => $this->post('profile'),
+            'profile_id' => $this->post('profile_id'),
             'birthdate' => $this->post('birthdate'),
             'status' => $this->post('status'),
                     
         );
         
         if ($user['name'] == '' || $user['email'] == '' ||
-            $user['password'] == '' || $user['profile'] == '' || $user['birthdate'] ==''
+            $user['password'] == '' || $user['profile_id'] == '' || $user['birthdate'] ==''
             || $user['status'] == '')
         {
             $message = [
