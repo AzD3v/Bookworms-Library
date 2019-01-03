@@ -87,8 +87,7 @@ class Users extends CI_Controller
 		$this->form_validation->set_rules('inputStatus','Status','required');
 
 		if ($this->form_validation->run() === TRUE) {
-			$post_data = array(
-				
+			$post_data = array (
 				'id_user' => $this->input->post('inputIdUser'),
 				'name' => $this->input->post('inputName'),
 				'id_profile' => $this->input->post('inputProfile'),
@@ -106,5 +105,31 @@ class Users extends CI_Controller
 		}
 
 	}
+
+	function getUser($id = 0)
+    {
+        $con = curl_init();
+        curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. ($id!=0 ? 'id/'.$id : ''));
+        curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($con);
+        if (!curl_errno($con)) {
+            switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)) {
+                case 200:
+                    break;
+                default:
+                    echo "Unexpected HTTP code: ", $http_code, "\n";
+                    exit;
+            }
+        }
+
+        $data = array(
+            'users' => json_decode($response, true)
+		);
+		
+        $this->load->view('geral/header');
+        $this->load->view('users/getuser', $data);
+        $this->load->view('geral/footer');
+
+    }
 
 }
