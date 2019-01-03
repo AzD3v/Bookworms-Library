@@ -42,4 +42,10 @@ class Users extends CI_Controller
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 	}
+
+	function addUserForm()
+	{
+		$this->load->view('users/add_user_form');
+	}
+
 }

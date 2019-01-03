@@ -62,7 +62,7 @@ class Bookworms extends CI_Controller
 			'books' => json_decode($response, true)
 		);
 		$this->load->view('geral/header');
-		$this->load->view('bookworms/getbooks', $data);
+		$this->load->view('book/getbooks', $data);
 		$this->load->view('geral/footer');
 
 	}
@@ -87,7 +87,7 @@ class Bookworms extends CI_Controller
 			'books' => json_decode($response, true)
 		);
 		$this->load->view('geral/header');
-		$this->load->view('bookworms/getbooks', $data);
+		$this->load->view('book/getbooks', $data);
 		$this->load->view('geral/footer');
 
 	}
@@ -115,14 +115,14 @@ class Bookworms extends CI_Controller
 		);
 
 		$this->load->view('geral/header');
-		$this->load->view('bookworms/add_book_success', $data);
+		$this->load->view('book/add_book_success', $data);
 		$this->load->view('geral/footer');
 	}
 
 	function addBookForm()
 	{
 		$this->load->view('geral/header.php');
-		$this->load->view('bookworms/add_book_form');
+		$this->load->view('book/add_book_form');
 		$this->load->view('geral/footer.php');
 	}
 
