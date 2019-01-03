@@ -27,7 +27,7 @@ class Users extends CI_Controller
 	var $api_url_users;
 
 	/**
-	 * Book constructor.
+	 * Users constructor.
 	 */
 
 	public function __construct()
