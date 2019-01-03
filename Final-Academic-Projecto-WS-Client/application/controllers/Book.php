@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property string api_url_book
  */
 
-class Bookworms extends CI_Controller
+class Book extends CI_Controller
 {
 
 	/**
@@ -27,14 +27,14 @@ class Bookworms extends CI_Controller
 	var $api_url_book;
 
 	/**
-	 * Bookworms constructor.
+	 * Book constructor.
 	 */
 
 	public function __construct()
 	{
 		parent::__construct();
 
-		$this->api_url_book = 'http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
+		$this->api_url_book = 'http://localhost/Book-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
 		// Helpers
 		$this->load->helper('url');
 		$this->load->helper('form');
