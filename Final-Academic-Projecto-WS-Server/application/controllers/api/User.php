@@ -39,19 +39,7 @@ class User extends REST_Controller {
 
         $id_user = $this->get('id_user');
 
-        if($id_user == NULL)
-        {
-            $message = [
-                'id' => -5,
-                'message' => 'it was not given user_id'
-            ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-            return;
-        }
-        else
-        {
-            $user = $this->user_validate_movel->validate_user($id_user);           
-        }
+       
 
         
 
@@ -69,19 +57,36 @@ class User extends REST_Controller {
 
     function addUser_post()
     {
+
         $user = array(
 
             'name' => $this->post('name'),
+            'id_profile' => $this->post('id_profile'),
             'email' => $this->post('email'),
             'password' => $this->post('password'),
-            'profile_id' => $this->post('profile_id'),
             'birthdate' => $this->post('birthdate'),
             'status' => $this->post('status'),
                     
         );
+
+         $id_user = $this->get('id_user');
+
+          if($id_user == NULL)
+        {
+            $message = [
+                'id' => -5,
+                'message' => 'it was not given user_id'
+            ];
+            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+            return;
+        }
+        else
+        {
+            $user = $this->user_validate_movel->validate_user($id_user);           
+        }
         
         if ($user['name'] == '' || $user['email'] == '' ||
-            $user['password'] == '' || $user['profile_id'] == '' || $user['birthdate'] ==''
+            $user['password'] == '' || $user['id_profile'] == '' || $user['birthdate'] ==''
             || $user['status'] == '')
         {
             $message = [
