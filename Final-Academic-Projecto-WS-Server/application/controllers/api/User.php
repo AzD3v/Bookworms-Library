@@ -32,7 +32,7 @@ class User extends REST_Controller {
     // To access:
     // http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/user/getuser
     
-    function getUser_get($user_id)
+    function getUser_get($profiler)
     {
         $id = $this->get('id');
 
@@ -73,7 +73,7 @@ class User extends REST_Controller {
             return;
         }
 
-        $ret = $this->book_model->addUser($user);
+        $ret = $this->user_model->addUser($user);
 
         if ($ret < 0)
         {

@@ -60,7 +60,7 @@
 <div id="body">
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
-			<h1 class="display-1">Welcome to BookWorms Administration Area!</h1>
+			<h1 class="display-1">Welcome to BookWorms!</h1>
 		</div>
 	</div>
 </div>
