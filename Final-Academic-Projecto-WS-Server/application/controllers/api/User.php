@@ -27,16 +27,35 @@ class User extends REST_Controller {
         parent::__construct();
 
         $this->load->model('api/user_model');
+        $this->load->model('api/user_validate_model');
 
     }
     // To access:
     // http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/user/getuser
     
-    function getUser_get($profiler)
+    function getUser_get()
     {
         $id = $this->get('id');
 
-        if ($id === NULL) {
+        $id_user = $this->get('id_user');
+
+        if($id_user == NULL)
+        {
+            $message = [
+                'id' => -5,
+                'message' => 'it was not given user_id'
+            ];
+            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+            return;
+        }
+        else
+        {
+            $user = $this->user_validate_movel->validate_user($id_user);           
+        }
+
+        
+
+        if ($id == NULL) {
             $users = $this->user_model->getUsers();
         } else {
             $users = $this->user_model->getUser($id);
