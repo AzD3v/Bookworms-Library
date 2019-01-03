@@ -56,7 +56,6 @@ class User extends REST_Controller {
     {
         
         $user = array(
-
             
             'id_profile' => $this->post('id_profile'),
             'name' => $this->post('name'), 
@@ -67,9 +66,8 @@ class User extends REST_Controller {
                     
         );
 
-         if ($user['name'] == '' || $user['email'] == '' ||
-            $user['password'] == '' || $user['id_profile'] == '' || $user['birthdate'] == ''
-            || $user['status'] == '')
+         if ($user['name'] == '' || $user['email'] == '' || $user['password'] == '' ||
+			 $user['id_profile'] == '' || $user['birthdate'] == '' || $user['status'] == '')
         {
             $message = [
                 'id' => -1,
