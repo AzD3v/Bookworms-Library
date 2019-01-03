@@ -22,7 +22,7 @@ class User_model extends CI_Model {
 
     function addUser($user)
     {
-        $ret = $this->db->insert('user', $user);
+        $ret = $this->db->insert('User', $user);
         if (!$ret)
             return -1;
 
@@ -66,5 +66,22 @@ class User_model extends CI_Model {
         return $users;
     }
 
+    function validate_user($id_user)
+    {
+        $this->db->select("u.id_profile");
+        $this->db->from('User as u');
+        $this->db->where('u.id = '.$id_user.'');
+
+        $query = $this->db->get();
+
+        $user = array();
+        foreach($query->result() as $t)
+            $user[] = (array) $t;
+
+        $id_user = $user[0];
+       
+        return $id_user;
+      
+    }
 
 }

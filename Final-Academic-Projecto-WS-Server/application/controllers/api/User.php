@@ -27,7 +27,7 @@ class User extends REST_Controller {
         parent::__construct();
 
         $this->load->model('api/user_model');
-        $this->load->model('api/user_validate_model');
+        //$this->load->model('api/user_validate_model');
 
     }
     // To access:
@@ -39,9 +39,6 @@ class User extends REST_Controller {
 
         $id_user = $this->get('id_user');
 
-       
-
-        
 
         if ($id == NULL) {
             $users = $this->user_model->getUsers();
@@ -57,11 +54,12 @@ class User extends REST_Controller {
 
     function addUser_post()
     {
-
+        
         $user = array(
 
-            'name' => $this->post('name'),
+            
             'id_profile' => $this->post('id_profile'),
+            'name' => $this->post('name'), 
             'email' => $this->post('email'),
             'password' => $this->post('password'),
             'birthdate' => $this->post('birthdate'),
@@ -69,8 +67,21 @@ class User extends REST_Controller {
                     
         );
 
-         $id_user = $this->get('id_user');
+         if ($user['name'] == '' || $user['email'] == '' ||
+            $user['password'] == '' || $user['id_profile'] == '' || $user['birthdate'] == ''
+            || $user['status'] == '')
+        {
+            $message = [
+                'id' => -1,
+                'message' => 'It was not given the required fields'
+            ];
+            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+            return;
+        }
 
+         $id_user = $this->post('id_user');
+         
+         
           if($id_user == NULL)
         {
             $message = [
@@ -82,20 +93,9 @@ class User extends REST_Controller {
         }
         else
         {
-            $user = $this->user_validate_movel->validate_user($id_user);           
+            $id_user = $this->user_model->validate_user($id_user);           
         }
-        
-        if ($user['name'] == '' || $user['email'] == '' ||
-            $user['password'] == '' || $user['id_profile'] == '' || $user['birthdate'] ==''
-            || $user['status'] == '')
-        {
-            $message = [
-                'id' => -1,
-                'message' => 'It was not given the required fields'
-            ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-            return;
-        }
+    
 
         $ret = $this->user_model->addUser($user);
 
