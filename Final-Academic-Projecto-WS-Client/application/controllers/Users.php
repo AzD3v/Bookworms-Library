@@ -42,12 +42,4 @@ class Users extends CI_Controller
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 	}
-
-	public function index()
-	{
-		$this->load->view('bookworms/welcome');
-    }
-
-	
-
 }
