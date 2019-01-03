@@ -34,7 +34,7 @@ class Users extends CI_Controller
 	{
 		parent::__construct();
         
-        $this->api_url_users = 'http://localhost/Book-Library/Final-Academic-Projecto-WS-Server/index.php/api/user/';
+        $this->api_url_users = 'http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/user';
 
 		// Helpers
 		$this->load->helper('url');
@@ -45,9 +45,9 @@ class Users extends CI_Controller
 
 	function addUser($post_data)
 	{
-
+		//echo $this->api_url_users; exit;
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/adduser/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users .'/adduser/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($con, CURLOPT_POST, TRUE);
 		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
@@ -66,7 +66,7 @@ class Users extends CI_Controller
 		);
 
 		$this->load->view('geral/header');
-		$this->load->view('book/add_user_success', $data);
+		$this->load->view('users/add_user_success', $data);
 		$this->load->view('geral/footer');
 	}
 
@@ -77,21 +77,25 @@ class Users extends CI_Controller
 
 	function validateNewUser()
 	{
+		$this->form_validation->set_rules('inputIdUser', 'idUser', 'required');
 		$this->form_validation->set_rules('inputName', 'Name', 'required');
+		$this->form_validation->set_rules('inputProfile','Profile','required');
 		$this->form_validation->set_rules('inputEmail', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('inputPassword', 'Password', 'required');
-		$this->form_validation->set_rules('inputPasswordRetype', 'Password Retype', 'required');
-		$this->form_validation->set_rules('inputUserType', 'Type of user', 'required');
+		$this->form_validation->set_rules('inputPasswordRetype', 'Password Retype','required');
 		$this->form_validation->set_rules('inputBirth', 'Birth Day', 'required');
+		$this->form_validation->set_rules('inputStatus','Status','required');
 
 		if ($this->form_validation->run() === TRUE) {
 			$post_data = array(
+				
+				'id_user' => $this->input->post('inputIdUser'),
 				'name' => $this->input->post('inputName'),
+				'id_profile' => $this->input->post('inputProfile'),
 				'email' => $this->input->post('inputEmail'),
 				'password' => $this->input->post('inputPassword'),
-				'password_retype' => $this->input->post('inputPasswordRetype'),
-				'user_type' => $this->input->post('inputUserType'),
-				'birth_date' => $this->input->post('inputBirth'),
+				'birthdate' => $this->input->post('inputBirth'),
+				'status' => $this->input->post('inputStatus'),
 			);
 
 			$this->addUser($post_data);

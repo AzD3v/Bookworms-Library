@@ -6,7 +6,7 @@
  * Time: 14:49
  */
 
-echo form_open("Book/validate_user_form",'role="form" class="form-horizontal"');?>
+echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 
 <div class="row">
 	<div class="col col-lg-12">
@@ -19,6 +19,26 @@ echo form_open("Book/validate_user_form",'role="form" class="form-horizontal"');
 		<?php echo validation_errors();?>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="form-group row">
+			<?php echo form_label('IdUser', 'inputIdUser', array('class' => 'col-lg-3 control-label'));?>
+			<div class="col-lg-9">
+				<?php echo form_input('inputIdUser', set_value('inputIdUser'), 'class="form-control"');?>
+			</div>
+		</div>
+	</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="form-group row">
+			<?php echo form_label('Profile', 'inputProfile', array('class' => 'col-lg-3 control-label'));?>
+			<div class="col-lg-9">
+				<?php echo form_input('inputProfile', set_value('inputProfile'), 'class="form-control"');?>
+			</div>
+		</div>
+	</div>
 
 <div class="row">
 	<div class="col-lg-6">
@@ -54,21 +74,10 @@ echo form_open("Book/validate_user_form",'role="form" class="form-horizontal"');
 <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
-			<?php echo form_label('Password Rewrite', 'inputPasswordRewrite', array('class' => 'col-lg-3 control-label'));?>
+			<?php echo form_label('Password Retype', 'inputPasswordRewrite', array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_input('inputPasswordRewrite', set_value('inputPasswordRewrite'), 'type="password" 
+				<?php echo form_input('inputPasswordRetype', set_value('inputPasswordRetype'), 'type="password" 
 				class="form-control"');?>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-lg-6">
-		<div class="form-group row">
-			<?php echo form_label('Type of user', 'inputUserType' ,array('class' => 'col-lg-3 control-label'));?>
-			<div class="col-lg-9">
-				<?php echo form_input('inputUserType', set_value('inputUserType'), 'class="form-control"');?>
 			</div>
 		</div>
 	</div>
@@ -85,6 +94,17 @@ echo form_open("Book/validate_user_form",'role="form" class="form-horizontal"');
 	</div>
 </div>
 
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="form-group row">
+			<?php echo form_label('Status', 'inputStatus', array('class' => 'col-lg-3 control-label'));?>
+			<div class="col-lg-9">
+				<?php echo form_input('inputStatus', set_value('inputStatus'), 'class="form-control"');?>
+			</div>
+		</div>
+	</div>
+
 <div class="row">
 	<div class="col-lg-12">
 		<p class="text-center">
@@ -93,5 +113,7 @@ echo form_open("Book/validate_user_form",'role="form" class="form-horizontal"');
 		</p>
 	</div>
 </div>
+
+
 
 <?php echo form_close(); ?>
