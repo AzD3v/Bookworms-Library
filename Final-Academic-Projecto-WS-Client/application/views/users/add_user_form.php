@@ -43,9 +43,9 @@ echo form_open("Book/validate_user_form",'role="form" class="form-horizontal"');
 <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
-			<?php echo form_label('Password', 'inputPassword' ,array('class' => 'col-lg-3 control-label'));?>
+			<?php echo form_label('Password', 'inputPassword', array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_input('inputFact', set_value('inputFact'), 'type="password" class="form-control"');?>
+				<?php echo form_input('inputPassword', set_value('inputPassword'), 'type="password" class="form-control"');?>
 			</div>
 		</div>
 	</div>
@@ -54,9 +54,21 @@ echo form_open("Book/validate_user_form",'role="form" class="form-horizontal"');
 <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
-			<?php echo form_label('Type of user', 'inputType' ,array('class' => 'col-lg-3 control-label'));?>
+			<?php echo form_label('Password Rewrite', 'inputPasswordRewrite', array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_input('inputType', set_value('inputType'), 'class="form-control"');?>
+				<?php echo form_input('inputPasswordRewrite', set_value('inputPasswordRewrite'), 'type="password" 
+				class="form-control"');?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="form-group row">
+			<?php echo form_label('Type of user', 'inputUserType' ,array('class' => 'col-lg-3 control-label'));?>
+			<div class="col-lg-9">
+				<?php echo form_input('inputUserType', set_value('inputUserType'), 'class="form-control"');?>
 			</div>
 		</div>
 	</div>
