@@ -68,4 +68,17 @@ class Book_model extends CI_Model {
         return $movies;
     }
 
+	// TODO: NEEDS WORK
+	public function editBook($id_user, $id_profile, $name, $email, $password)
+	{
+		$this->db->update('User');
+		$this->db->set('user.id_profile = '.$id_profile.'');
+		$this->db->set('user.name = '.$name.'');
+		$this->db->set('user.email = '.$email.'');
+		$this->db->set('user.password = '.$password.'');
+		$this->db->where('u.id = '.$id_user.'');
+
+		return $ret = 0;
+	}
+
 }

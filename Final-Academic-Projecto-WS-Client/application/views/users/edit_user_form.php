@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: paulo
- * Date: 02-01-2019
- * Time: 14:49
+ * Date: 04-01-2019
+ * Time: 21:19
  */
 
 echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
@@ -23,28 +23,18 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
-			<?php echo form_label('IdUser', 'inputIdUser', array('class' => 'col-lg-3 control-label'));?>
-			<div class="col-lg-9">
-				<?php echo form_input('inputIdUser', set_value('inputIdUser'), 'class="form-control"');?>
-			</div>
-		</div>
-	</div>
-
-<div class="row">
-	<div class="col-lg-6">
-		<div class="form-group row">
 			<?php echo form_label('User Profile', 'inputProfile', array('class' => 'col-lg-3 control-label'));
 			$options = array(
-			'1'         => 'Admin',
-			'2'           => 'User',
+				'1'         => 'Admin',
+				'2'         => 'User',
 			);
 
 			?>
 			<div class="col-lg-9">
 				<?php echo form_dropdown('inputProfile', $options);?>
 			</div>
-		</div>
 	</div>
+</div>
 
 <div class="row">
 	<div class="col-lg-6">
@@ -54,10 +44,10 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 				<?php echo form_input('inputName', set_value('inputName'), 'class="form-control"');?>
 			</div>
 		</div>
-	</div>
+</div>
 
-	<div class="col-lg-6">
-		<div class="form-group row">
+<div class="col-lg-6">
+	<div class="form-group row">
 			<?php echo form_label('Email', 'inputEmail' ,array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
 				<?php echo form_input('inputEmail', set_value('inputEmail'), 'class="form-control"');?>
@@ -87,34 +77,21 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 		</div>
 	</div>
 </div>
-
-<div class="row">
-	<div class="col-lg-6">
-		<div class="form-group row">
-			<?php echo form_label('Birth Date', 'inputBirth' ,array('class' => 'col-lg-3 control-label'));?>
-			<div class="col-lg-9">
-				<?php echo form_input('inputBirth', set_value('inputBirth'), 'class="form-control" 
-				placeholder="05-07-1993"');?>
-			</div>
-		</div>
+<!-- <div class="row">
+<div class="col-lg-6">
+<div class="form-group row">
+	<?php echo form_label('Status', 'inputStatus', array('class' => 'col-lg-3 control-label'));?>
+	<div class="col-lg-9">
+		<?php echo form_input('inputStatus', set_value('inputStatus'), 'class="form-control"');?>
 	</div>
 </div>
-
-<!-- <div class="row">
-	<div class="col-lg-6">
-		<div class="form-group row">
-			<?php echo form_label('Status', 'inputStatus', array('class' => 'col-lg-3 control-label'));?>
-			<div class="col-lg-9">
-				<?php echo form_input('inputStatus', set_value('inputStatus'), 'class="form-control"');?>
-			</div>
-		</div>
-	</div> -->
+</div> -->
 
 <div class="row">
 	<div class="col-lg-12">
 		<p class="text-center">
 			<br>
-			<button type="submit" class="btn btn-primary">Add new user!</button>
+			<button type="submit" class="btn btn-primary">Edit user!</button>
 		</p>
 	</div>
 </div>
