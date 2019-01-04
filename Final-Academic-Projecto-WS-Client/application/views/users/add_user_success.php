@@ -5,6 +5,6 @@
 	</head>
 
 	<body>
-		<h3>Your User has been approved</h3>
+		<h3>Your user has been approved</h3>
 	</body>
 </html>

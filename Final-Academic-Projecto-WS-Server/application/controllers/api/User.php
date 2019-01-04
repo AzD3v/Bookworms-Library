@@ -35,11 +35,12 @@ class User extends REST_Controller {
     
     function getUser_get()
     {
+
         $id = $this->get('id');
 
         $id_user = $this->get('id_user');
 
-        if ($id == NULL)
+        if ($id === NULL)
         {
 
              $id_profile = $this->user_model->validate_user($id_user);
@@ -57,12 +58,12 @@ class User extends REST_Controller {
                     $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
                     return;
              }
-        } 
+        }
         else
         {
-            
+
             $id_profile = $this->user_model->validate_user($id_user);
-            
+
             if($id_profile == 1 || $id == $id_user)
             {
                 $users = $this->user_model->getUser($id);
@@ -90,7 +91,6 @@ class User extends REST_Controller {
 
         $user = array(
 
-            
             'id_profile' => $this->post('id_profile'),
             'name' => $this->post('name'), 
             'email' => $this->post('email'),
