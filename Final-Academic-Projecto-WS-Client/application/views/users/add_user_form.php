@@ -33,9 +33,16 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
-			<?php echo form_label('Profile', 'inputProfile', array('class' => 'col-lg-3 control-label'));?>
+
+			<?php echo form_label('User Profile', 'inputProfile', array('class' => 'col-lg-3 control-label'));
+			$options = array(
+			'1'         => 'Admin',
+			'2'           => 'User',
+			);
+
+			?>
 			<div class="col-lg-9">
-				<?php echo form_input('inputProfile', set_value('inputProfile'), 'class="form-control"');?>
+				<?php echo form_dropdown('shirts', $options);?>
 			</div>
 		</div>
 	</div>
@@ -65,7 +72,7 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 		<div class="form-group row">
 			<?php echo form_label('Password', 'inputPassword', array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_input('inputPassword', set_value('inputPassword'), 'type="password" class="form-control"');?>
+				<?php echo form_password('inputPassword', set_value('inputPassword'), 'class="form-control"');?>
 			</div>
 		</div>
 	</div>
@@ -76,8 +83,7 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 		<div class="form-group row">
 			<?php echo form_label('Password Retype', 'inputPasswordRewrite', array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_input('inputPasswordRetype', set_value('inputPasswordRetype'), 'type="password" 
-				class="form-control"');?>
+				<?php echo form_password('inputPasswordRetype', set_value('inputPasswordRetype'), ' class="form-control"');?>
 			</div>
 		</div>
 	</div>
@@ -86,16 +92,16 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
-			<?php echo form_label('Birth Day', 'inputBirth' ,array('class' => 'col-lg-3 control-label'));?>
+			<?php echo form_label('Birth Date', 'inputBirth' ,array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_input('inputBirth', set_value('inputBirth'), 'class="form-control"');?>
+				<?php echo form_input('inputBirth', set_value('inputBirth'), 'class="form-control" 
+				placeholder="05-07-1993"');?>
 			</div>
 		</div>
 	</div>
 </div>
 
-
-<div class="row">
+<!-- <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
 			<?php echo form_label('Status', 'inputStatus', array('class' => 'col-lg-3 control-label'));?>
@@ -103,7 +109,7 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 				<?php echo form_input('inputStatus', set_value('inputStatus'), 'class="form-control"');?>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 <div class="row">
 	<div class="col-lg-12">
