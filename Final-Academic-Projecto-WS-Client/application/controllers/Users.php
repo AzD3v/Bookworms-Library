@@ -61,12 +61,8 @@ class Users extends CI_Controller
 
 		curl_close($con);
 
-		$data = array (
-			'users' => json_decode($response, true)
-		);
-
 		$this->load->view('geral/header');
-		$this->load->view('users/add_user_success', $data);
+		$this->load->view('users/add_user_success');
 		$this->load->view('geral/footer');
 	}
 

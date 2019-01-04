@@ -53,9 +53,11 @@ class User extends REST_Controller {
     // http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/user/adduser
 
     function addUser_post()
-    {
-        
+    {   
+        $id_user = $this->post('id_user');
+
         $user = array(
+
             
             'id_profile' => $this->post('id_profile'),
             'name' => $this->post('name'), 
@@ -66,54 +68,56 @@ class User extends REST_Controller {
                     
         );
 
-         if ($user['name'] == '' || $user['email'] == '' || $user['password'] == '' ||
-			 $user['id_profile'] == '' || $user['birthdate'] == '' || $user['status'] == '')
-        {
-            $message = [
-                'id' => -1,
-                'message' => 'It was not given the required fields'
-            ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-            return;
-        }
-
-         $id_user = $this->post('id_user');
-         
-         
-          if($id_user == NULL)
-        {
-            $message = [
-                'id' => -5,
-                'message' => 'it was not given user_id'
-            ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-            return;
-        }
-        else
-        {
-            $id_user = $this->user_model->validate_user($id_user);           
-        }
-    
-
-        $ret = $this->user_model->addUser($user);
-
-        if ($ret < 0)
+        if ($user['id_profile'] == '' || $user['name'] == '' ||
+            $user['email'] == '' || $user['password'] == '' || $user['birthdate'] == '' ||
+            $user['status'] =='' || $id_user == '')
         {
             $message = [
                 'id' => -2,
-                'message' => 'it was not possible to register the user',
+                'message' => 'The required fields were not introduced'
             ];
-
             $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+            return;
         }
-        else
+
+        
+
+        $id_profile = $this->user_model->validate_user($id_user);
+
+        if($id_profile == 1)
         {
-            $message = [
+            $ret = $this->user_model->addUser($user);
+
+            if($ret == 0)
+            {
+                 $message = [
                 'id' => 0,
                 'message' => 'User Registered'
             ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_CREATED); // Create 201 (being the HTTP code)
+                $this->set_response($message, REST_CONTROLLER::HTTP_CREATED); // Create 201 (being the HTTP code)
+            }
+            else
+            {
+                 $message = [
+                'id' => -3,
+                'message' => 'Error Registering User'
+            ];
+                $this->set_response($message, REST_CONTROLLER::HTTP_CREATED); // Create 201 (being the HTTP code)
+            }
         }
+
+        else
+        {
+            $message = [
+                'id' => -1,
+                'message' => 'The user must be an Admin to add an user'
+            ];
+            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+            return; 
+        }
+
+
+    
 
     }
 

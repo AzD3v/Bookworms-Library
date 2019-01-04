@@ -23,13 +23,10 @@ class User_model extends CI_Model {
     function addUser($user)
     {
         $ret = $this->db->insert('User', $user);
-        if (!$ret)
-            return -1;
-
-        $user_id = $this->db->insert_id();
         
+        $ret = 0;
 
-        return $user_id;
+        return $ret;
     }
 
     function getUsers()
@@ -78,9 +75,9 @@ class User_model extends CI_Model {
         foreach($query->result() as $t)
             $user[] = (array) $t;
 
-        $id_user = $user[0];
-       
-        return $id_user;
+         $id_profile = $user[0]['id_profile'];
+
+        return $id_profile;
       
     }
 
