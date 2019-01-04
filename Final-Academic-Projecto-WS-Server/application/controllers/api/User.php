@@ -148,5 +148,63 @@ class User extends REST_Controller {
 
 
     }
+    // To access:
+    // http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/user/changeuserstatus
+    
+    function changeUserStatus_post()
+    {
+         $id_user = $this->post('id_user');
+
+         $status = $this->post('status');
+
+         if ($id_user == '' || $status == '')
+        {
+            $message = [
+                'id' => -2,
+                'message' => 'The required fields were not introduced'
+            ];
+            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+            return;
+        }
+        
+        $id_profile = $this->user_model->validate_user($id_user);
+        
+         
+         if($id_profile == 1)
+         {
+            $ret = $this->user_model->change_user_status($id_user,$status);
+
+            if($ret == 0)
+            {
+                $message = 
+                [
+                    'id' => 0,
+                    'message' => 'Changed Status with success'
+                ];
+                
+                $this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
+            }
+            else
+            {
+                $message = 
+                [
+                    'id' => -1,
+                    'message' => 'Error changing Status'
+                ];
+                
+                $this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
+            }
+         }
+         else
+         {
+              $message = 
+              [
+                'id' => -3,
+                'message' => 'Must be an admin to change status'
+              ];
+                $this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
+                return;
+         }
+    }
 
 }

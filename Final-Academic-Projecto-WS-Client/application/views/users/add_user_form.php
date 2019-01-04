@@ -33,7 +33,7 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
-			<?php echo form_label('Profile', 'inputProfile', array('class' => 'col-lg-3 control-label'));?>
+			<?php echo form_label('IdProfile', 'inputProfile', array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
 				<?php echo form_input('inputProfile', set_value('inputProfile'), 'class="form-control"');?>
 			</div>

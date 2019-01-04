@@ -47,7 +47,7 @@ class User_model extends CI_Model {
 
     function getUser($id)
     {   
-        $this->db->select("u.name, u.email");
+        $this->db->select("u.id_profile, u.id_name, u.email, , u.birthdate, u.status");
         $this->db->from('User as u');
 
         $this->db->where('u.id', $id);
@@ -79,6 +79,15 @@ class User_model extends CI_Model {
 
         return $id_profile;
       
+    }
+
+    function change_user_status($id_user, $status)
+    {
+        $this->db->update('User');
+        $this->db->set('user.status = '.$status.'');
+        $this->db->where('u.id = '.$id_user.'');
+
+        return $ret = 0;
     }
 
 }
