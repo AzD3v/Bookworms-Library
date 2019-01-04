@@ -39,14 +39,46 @@ class User extends REST_Controller {
 
         $id_user = $this->get('id_user');
 
+        if ($id == NULL)
+        {
 
-        if ($id == NULL) {
-            $users = $this->user_model->getUsers();
-        } else {
-            $users = $this->user_model->getUser($id);
+             $id_profile = $this->user_model->validate_user($id_user);
+
+             if($id_profile == 1)
+             {
+                 $users = $this->user_model->getUsers();
+             }
+             else
+             {
+                $message = [
+                    'id' => -1,
+                    'message' => 'The user must be an Admin to add an user'
+                ];
+                    $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+                    return;
+             }
+        } 
+        else
+        {
+            
+            $id_profile = $this->user_model->validate_user($id_user);
+            
+            if($id_profile == 1 || $id == $id_user)
+            {
+                $users = $this->user_model->getUser($id);
+            }
+            {
+                $message = [
+                    'id' => -2,
+                    'message' =>
+                    'The user must be an Admin to add an user, or the User who requested
+                    must be the same user'
+                ];
+                    $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+                    return;
+            }
         }
-        // Set the response and exit
-        $this->response($users, REST_Controller::HTTP_OK); // OK (200)
+
     }
 
     // To access:
@@ -79,8 +111,6 @@ class User extends REST_Controller {
             $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
             return;
         }
-
-        
 
         $id_profile = $this->user_model->validate_user($id_user);
 
@@ -116,8 +146,6 @@ class User extends REST_Controller {
             return; 
         }
 
-
-    
 
     }
 
