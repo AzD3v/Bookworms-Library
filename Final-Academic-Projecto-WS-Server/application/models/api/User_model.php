@@ -34,8 +34,6 @@ class User_model extends CI_Model {
         $this->db->select("u.name, u.email");
         $this->db->from('User as u');
         
-        $this->db->group_by('u.name');
-        
         $query = $this->db->get();
 
         $users = array();
@@ -89,5 +87,18 @@ class User_model extends CI_Model {
 
         return $ret = 0;
     }
+
+    // TODO: NEEDS WORK
+	public function editUser($id_user, $id_profile, $name, $email, $password)
+	{
+		$this->db->update('User');
+		$this->db->set('user.id_profile = '.$id_profile.'');
+		$this->db->set('user.name = '.$name.'');
+		$this->db->set('user.email = '.$email.'');
+		$this->db->set('user.password = '.$password.'');
+		$this->db->where('u.id = '.$id_user.'');
+
+		return $ret = 0;
+	}
 
 }

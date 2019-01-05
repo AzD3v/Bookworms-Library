@@ -35,9 +35,10 @@ class User extends REST_Controller {
     
     function getUser_get()
     {
+/*
         $id = $this->get('id');
 
-        $id_user = $this->get('id_user');
+        //$id_user = $this->get('id_user');
 
         if($id_user == NULL)
         {
@@ -55,6 +56,68 @@ class User extends REST_Controller {
         
 
             if ($id == NULL)
+            {
+
+                $id_profile = $this->user_model->validate_user($id_user);
+
+                if($id_profile == 1)
+                {
+                    $users = $this->user_model->getUsers();
+                    this->set_response($users, REST_CONTROLLER::HTTP_OK);
+                }
+                else
+                {
+                    $message = [
+                        'id' => -1,
+                        'message' => 'The user must be an Admin to add an user'
+                    ];
+                        $this->set_response($message, REST_CONTROLLER::HTTP_ERROR);
+                        return;
+                }
+            } 
+            else
+            {
+                
+                $id_profile = $this->user_model->validate_user($id_user);
+                
+                if($id_profile == 1 || $id == $id_user)
+                {
+                    $users = $this->user_model->getUser($id);
+                    this->set_response($users, REST_CONTROLLER::HTTP_OK);
+                }
+                {
+                    $message = [
+                        'id' => -2,
+                        'message' =>
+                        'The user must be an Admin to add an user, or the User who requested
+                        must be the same user'
+                    ];
+                        $this->set_response($message, REST_CONTROLLER::HTTP_ERROR);
+                        return;
+                }
+            }
+        }
+*/
+        $id = $this->get('id');
+
+        //"$id_user = $this->get('id_user');
+
+        
+
+        if ($id === NULL)
+        {
+          
+            $users = $this->user_model->getUsers();
+            $this->set_response($users, REST_CONTROLLER::HTTP_OK);
+ 
+        }
+        else
+        {
+            if ($id == NULL)
+
+            $id_profile = $this->user_model->validate_user($id_user);
+
+            if($id_profile == 1 || $id == $id_user)
             {
 
                 $id_profile = $this->user_model->validate_user($id_user);
@@ -106,7 +169,6 @@ class User extends REST_Controller {
 
         $user = array(
 
-            
             'id_profile' => $this->post('id_profile'),
             'name' => $this->post('name'), 
             'email' => $this->post('email'),

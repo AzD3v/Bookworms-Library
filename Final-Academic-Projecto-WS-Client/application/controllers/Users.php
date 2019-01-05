@@ -43,6 +43,32 @@ class Users extends CI_Controller
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 	}
 
+	function getUser($id = 0)
+	{
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. ($id!=0 ? 'id/'.$id : ''));
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($con);
+		if (!curl_errno($con)) {
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)) {
+				case 200:
+					break;
+				default:
+					echo "Unexpected HTTP code: ", $http_code, "\n";
+					exit;
+			}
+		}
+
+		$data = array(
+			'users' => json_decode($response, true)
+		);
+
+		$this->load->view('geral/header');
+		$this->load->view('users/getuser', $data);
+		$this->load->view('geral/footer');
+
+	}
+
 	function addUser($post_data)
 	{
 		//echo $this->api_url_users; exit;
@@ -102,30 +128,60 @@ class Users extends CI_Controller
 
 	}
 
-	function getUser($id = 0)
-    {
-        $con = curl_init();
-        curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. ($id!=0 ? 'id/'.$id : ''));
-        curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($con);
-        if (!curl_errno($con)) {
-            switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)) {
-                case 200:
-                    break;
-                default:
-                    echo "Unexpected HTTP code: ", $http_code, "\n";
-                    exit;
-            }
-        }
+	// TODO: ALL EDIT METHODS NEED WORK
+	function editUser($post_data)
+	{
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users .'/edituser/');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($con, CURLOPT_POST, TRUE);
+		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+		$response = curl_exec($con);
+		if (!curl_errno($con)){
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)){
+				case 201: break;
+				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
+			}
+		}
 
-        $data = array(
-            'users' => json_decode($response, true)
-		);
-		
-        $this->load->view('geral/header');
-        $this->load->view('users/getuser', $data);
-        $this->load->view('geral/footer');
+		curl_close($con);
 
-    }
+		$this->load->view('geral/header');
+		$this->load->view('users/edit_user_success');
+		$this->load->view('geral/footer');
+	}
+
+	function editUserForm()
+	{
+		$this->load->view('users/edit_user_form');
+	}
+
+	function validateUserEdition()
+	{
+		$this->form_validation->set_rules('inputName', 'Name', 'required');
+		$this->form_validation->set_rules('inputProfile','Profile','required');
+		$this->form_validation->set_rules('inputEmail', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('inputPassword', 'Password', 'required');
+		$this->form_validation->set_rules('inputPasswordRetype', 'Password Retype','required');
+		$this->form_validation->set_rules('inputStatus','Status','required');
+
+		if ($this->form_validation->run() === TRUE) {
+			$post_data = array (
+				'id_user' => $this->input->post('inputIdUser'),
+				'name' => $this->input->post('inputName'),
+				'id_profile' => $this->input->post('inputProfile'),
+				'email' => $this->input->post('inputEmail'),
+				'password' => $this->input->post('inputPassword'),
+				'status' => $this->input->post('inputStatus'),
+			);
+
+			$this->editUser($post_data);
+		}
+		else
+		{
+			$this->editUserForm();
+		}
+
+	}
 
 }
