@@ -34,8 +34,6 @@ class User_model extends CI_Model {
         $this->db->select("u.name, u.email");
         $this->db->from('User as u');
         
-        $this->db->group_by('u.name');
-        
         $query = $this->db->get();
 
         $users = array();

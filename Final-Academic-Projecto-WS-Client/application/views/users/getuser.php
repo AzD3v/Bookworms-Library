@@ -5,6 +5,7 @@
 /* if (isset($users['message'])) {
     header( "");
 } */
+var_dump($users);
 
 ?>
 
