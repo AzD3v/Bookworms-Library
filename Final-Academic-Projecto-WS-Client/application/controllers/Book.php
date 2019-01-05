@@ -91,8 +91,54 @@ class Book extends CI_Controller
 		$this->load->view('geral/header');
 		$this->load->view('book/getbooks', $data);
 		$this->load->view('geral/footer');
-
 	}
+
+	function rateBook()
+    {
+       $this->load->view('geral/header.php');
+       $response = file_get_contents($this->api_url_book . '/getBook/');
+		$data = array(
+			'books' => json_decode($response,TRUE)
+		);
+	
+       $this->load->view('book/rateBookForm',$data);
+       $this->load->view('geral/footer.php');
+	}
+	
+	function validate_rateBook()
+	{
+        $this->form_validation->set_rules('inputIdUser','IdUser','required');
+        $this->form_validation->set_rules('inputBook','Book','required');
+        $this->form_validation->set_rules('inputRate','Rating','required');
+
+        if($this->form_validation->run()===true)
+        {
+			$post_data = array(
+                'idUser' => $this->input->post('inputTitle'),
+                'year' => $this->input->post('inputYear'),
+                'gender_id' => $this->input->post('inputGender'),
+                'description' => $this->input->post('inputDescription'),
+            );
+		} else
+		{
+			echo "Error while rating book";
+		}
+		$this->rateBook($post_data);   
+	}
+
+	function rateBook_form($post_data)
+    {
+        $con = curl_init();
+        curl_setopt($con, CURLOPT_URL, $this->api_url.'/rateMovie/');
+        curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
+        curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+        $response = curl_exec($con);
+		curl_close($con);
+		
+        $result = json_decode($response,TRUE);
+        echo "Book was rated with id : ".$result['id'];
+    }
 
 	function addBook($post_data)
 	{
