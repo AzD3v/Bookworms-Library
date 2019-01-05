@@ -34,7 +34,7 @@ class Book extends CI_Controller
 	{
 		parent::__construct();
 
-		$this->api_url_book = 'http://localhost/Book-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
+		$this->api_url_book = 'http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
 		// Helpers
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -42,7 +42,7 @@ class Book extends CI_Controller
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 	}
 
-
+	// ****  START OF  METHODS ****
 
 	function getBooks()
 	{
@@ -92,11 +92,11 @@ class Book extends CI_Controller
 		$this->load->view('book/getbooks', $data);
 		$this->load->view('geral/footer');
 	}
-
+	// ****  Rate Book ****
 	function rateBook()
     {
        $this->load->view('geral/header.php');
-       $response = file_get_contents($this->api_url_book . '/getBook/');
+       $response = file_get_contents($this->api_url_book . '/getBooks/');
 		$data = array(
 			'books' => json_decode($response,TRUE)
 		);
@@ -109,37 +109,41 @@ class Book extends CI_Controller
 	{
         $this->form_validation->set_rules('inputIdUser','IdUser','required');
         $this->form_validation->set_rules('inputBook','Book','required');
-        $this->form_validation->set_rules('inputRate','Rating','required');
+		$this->form_validation->set_rules('inputRate','Rating','required');
+		$this->form_validation->set_rules('inputDate','Date','required');
 
         if($this->form_validation->run()===true)
         {
 			$post_data = array(
-                'idUser' => $this->input->post('inputTitle'),
-                'year' => $this->input->post('inputYear'),
-                'gender_id' => $this->input->post('inputGender'),
-                'description' => $this->input->post('inputDescription'),
-            );
-		} else
-		{
-			echo "Error while rating book";
+                'reader_id' => $this->input->post('inputIdUser'),
+				'book_id' => $this->input->post('inputBook'),
+				'rating_value' => $this->input->post('inputRate'),
+				'rating_date'=>$this->input->post('inputDate')
+			);
+		
+			$this->rateBook_form($post_data);
 		}
-		$this->rateBook($post_data);   
+		else
+		{
+			$this->rateBook();
+		}
 	}
 
 	function rateBook_form($post_data)
     {
-        $con = curl_init();
-        curl_setopt($con, CURLOPT_URL, $this->api_url.'/rateMovie/');
-        curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
-        curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
-        $response = curl_exec($con);
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/rateBook/');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
+		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+		$response = curl_exec($con);
 		curl_close($con);
-		
-        $result = json_decode($response,TRUE);
-        echo "Book was rated with id : ".$result['id'];
-    }
 
+		$result = json_decode($response,TRUE);
+		echo "Book ".$result['book_id']." was rated ";
+	}
+	
+	// ****  Add Book ****
 	function addBook($post_data)
 	{
 

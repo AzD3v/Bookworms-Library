@@ -76,4 +76,13 @@ class Book extends REST_Controller {
 
     }
 
+    function addRate_post()
+    {
+        $book = array(
+            'reader_id' => $this->post('reader_id'),
+            'book_id' => $this->post('book_id'),
+            'rating_value' => $this->post('rating_value'),
+            'rating_date'=>$this->post('rating_date')
+        );
+        
 }

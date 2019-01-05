@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col col-lg-12">
-        <h2>Rate a Book</h2>
+        <h2>Rate Book</h2>
     </div>
 </div>
 
@@ -45,15 +45,30 @@
     <div class="col-lg-6">
         <div class="form-group row">
             <?php echo form_label('Rating', 'inputRate' ,array('class' => 'col-lg-3 control-label'));?>
-           <select name ="inputRate">
-                <option selected value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-           </select>
+            <div class="col-lg-9">
+            <select name ="inputRate">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+            </select>
+            </div>
         </div>
     </div>
+</div>
+
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="form-group row">
+			<?php echo form_label('Date', 'inputDate' ,array('class' => 'col-lg-3 control-label'));?>
+			<div class="col-lg-9">
+				<?php echo form_input('inputDate', set_value('inputDate'), 'class="form-control" 
+				placeholder="08-01-2019"');?>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="row">
