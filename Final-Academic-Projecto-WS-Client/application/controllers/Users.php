@@ -46,7 +46,7 @@ class Users extends CI_Controller
 	function getUser($id = 0)
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. ($id!=0 ? 'id/'.$id : ''));
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. 'id_user/1'. ($id!=0 ? 'id/'.$id : ''));
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {
