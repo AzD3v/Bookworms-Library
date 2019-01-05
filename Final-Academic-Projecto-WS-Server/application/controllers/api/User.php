@@ -39,7 +39,7 @@ class User extends REST_Controller {
         $id = $this->get('id');
 
         $id_user = $this->get('id_user');
-
+        
         if($id_user == NULL)
         {
              $message = 
@@ -52,8 +52,6 @@ class User extends REST_Controller {
         }
         else
         {
-
-        
 
             if ($id == NULL)
             {
