@@ -50,8 +50,6 @@ class User_model extends CI_Model {
 
         $this->db->where('u.id', $id);
         
-        $this->db->group_by('u.name');
-        
         $query = $this->db->get();
 
         $users = array();

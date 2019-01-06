@@ -43,10 +43,10 @@ class Users extends CI_Controller
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 	}
 
-	function getUser($id = 0)
+	function getUser()
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. 'id_user/1'. ($id!=0 ? 'id/'.$id : ''));
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. 'id_user/1');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {
@@ -109,6 +109,7 @@ class Users extends CI_Controller
 		$this->form_validation->set_rules('inputStatus','Status','required');
 
 		if ($this->form_validation->run() === TRUE) {
+			
 			$post_data = array (
 				'id_user' => $this->input->post('inputIdUser'),
 				'name' => $this->input->post('inputName'),
