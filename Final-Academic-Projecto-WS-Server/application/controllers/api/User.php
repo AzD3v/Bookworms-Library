@@ -286,5 +286,50 @@ class User extends REST_Controller {
         }
         
     }
+/***** monkaS welp please why this no work :( */
+    function addFriend_post()
+    {
+        $User = $this->post('User_id');
 
+         $Friend = $this->post('friend_id');
+
+        if ($User == '' || $User == $Friend )
+        {
+            $message = [
+                'id' => -2,
+                'message' => 'The required fields were not introduced or they were impossible to execute'
+            ];
+            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+            return;
+
+            if($id_profile == 1)
+            {
+                $ret = $this->user_model->addFriend($User, $Friend);
+                
+                if($ret == 0)
+                {
+                
+                    $message = 
+                    [
+                        'id' => 0,
+                        'message' => 'Edited User with success'
+                    ];
+                    
+                    $this->set_response($message, REST_CONTROLLER::HTTP_OK);
+                    return;
+                }
+                else
+                {
+                     $message = 
+                    [
+                        'id' => -3,
+                        'message' => 'Error editting User'
+                    ];
+                    
+                    $this->set_response($message, REST_CONTROLLER::HTTP_ERROR);
+                }
+            }
+
+        }
+    }
 }
