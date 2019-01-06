@@ -37,9 +37,9 @@ class Book extends REST_Controller
 			'name' => $this->post('name'),
 			'author' => $this->post('author'),
 			'isbn' => $this->post('isbn'),
-			'cover' => $this->post('cover'),
 			'reader_id' => $this->post('reader_id'),
-			// 'admin_id' => $this->post('admin_id')
+			// 'admin_id' => $this->post('admin_id'),
+			'cover' => $this->post('bookCover')
 		);
 		$genders = $this->post('gender_id');
 
@@ -47,7 +47,7 @@ class Book extends REST_Controller
 			$book['isbn'] == '' || $book == 'reader_id' || $book == 'admin_id') {
 			$message = [
 				'id' => -1,
-				'message' => 'It was not given the required fields'
+				'message' => 'The required fields were not given'
 			];
 			$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
 			return;
