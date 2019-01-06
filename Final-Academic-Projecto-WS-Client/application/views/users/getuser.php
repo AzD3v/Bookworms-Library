@@ -1,3 +1,7 @@
+<?php echo form_open("users/validateSpecificUserSearch/",'role="form" class="form-horizontal"');
+
+?>
+
 <link rel="stylesheet" href="../../../assets/css/geral.css">
 
 <div class="page-header">
@@ -17,7 +21,10 @@
 
     <?php
 
-        foreach($users as $user) {
+	   if(isset($users))
+	   {
+		   
+	   foreach($users as $user) {
 
     ?>
 
@@ -26,14 +33,22 @@
         <td><?php echo $user['email']; ?></td>
     </tr>
 
-    <?php } ?>
+    <?php } } ?>
 
     </tbody>
 </table>
 
-<?php echo form_open("users/validateSpecificUserSearch/",'role="form" class="form-horizontal"');?>
 
-<?php echo form_input('idSpecificUser', set_value('idSpecificUser'));?>
+<div class="row">
+	<div class="col-lg-6">
+		<div class="form-group row">
+			<?php echo form_label('id', 'inputIdSpecificUser', array('class' => 'col-lg-3 control-label'));?>
+			<div class="col-lg-9">
+				<?php echo form_input('inputIdSpecificUser', set_value('inputIdSpecificUser'), 'class="form-control"');?>
+			</div>
+		</div>
+	</div>
+</div>
 
 <button type="submit" class="btn btn-success">SEARCH SPECIFIC USER</button>
 

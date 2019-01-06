@@ -71,15 +71,20 @@ class Users extends CI_Controller
 
 	function validateSpecificUserSearch()
 	{
-		$this->form_validation->set_rules('idSpecificUser', 'required');
+		$this->form_validation->set_rules('inputIdSpecificUser','id', 'required');
 
 		if ($this->form_validation->run() === TRUE) {
 			$post_data = array (
-				'id' => $this->input->post('idSpecificUser')
+				'id' => $this->input->post('inputIdSpecificUser')
 			);
 
 			$this->getSpecificUser($post_data);
 
+		}
+
+		else
+		{
+			$this->getUser();
 		}
 	}
 
@@ -93,15 +98,19 @@ class Users extends CI_Controller
 		$response = curl_exec($con);
 		if (!curl_errno($con)){
 			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)){
-				case 201: break;
+				case 200: break;
 				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
 			}
 		}
 
 		curl_close($con);
 
+		$data = array(
+			'user' => json_decode($response, true)
+		);
+
 		$this->load->view('geral/header');
-		$this->load->view('users/getuser');
+		$this->load->view('users/getuser', $data);
 		$this->load->view('geral/footer');
 	}
 
