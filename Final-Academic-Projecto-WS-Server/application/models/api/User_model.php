@@ -31,7 +31,7 @@ class User_model extends CI_Model {
 
     function getUsers()
     {
-        $this->db->select("u.name, u.email");
+        $this->db->select("u.id,u.name, u.email");
         $this->db->from('User as u');
         
         $query = $this->db->get();

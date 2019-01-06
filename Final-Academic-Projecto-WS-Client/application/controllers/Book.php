@@ -95,14 +95,13 @@ class Book extends CI_Controller
 	// ****  Rate Book ****
 	function rateBook()
     {
-       $this->load->view('geral/header.php');
-       $response = file_get_contents($this->api_url_book . '/getBooks/');
+		$response = file_get_contents($this->api_url_book . '/getBooks/');
 		$data = array(
 			'books' => json_decode($response,TRUE)
 		);
-	
-       $this->load->view('book/rateBookForm',$data);
-       $this->load->view('geral/footer.php');
+		$this->load->view('geral/header.php');
+		$this->load->view('book/rateBookForm',$data);
+		$this->load->view('geral/footer.php');
 	}
 	
 	function validate_rateBook()

@@ -69,6 +69,59 @@ class Users extends CI_Controller
 
 	}
 
+	function addFriend()
+	{
+		$response = file_get_contents($this->api_url_users. '/getuser/'. 'id_user/1');
+		$data = array(
+			'users' => json_decode($response,TRUE)
+		);
+		$this->load->view('geral/header.php');
+		$this->load->view('users/add_friend',$data);
+		$this->load->view('geral/footer.php');
+	}
+
+	function validate_addFriend()
+	{
+        $this->form_validation->set_rules('inputIdUser','IdUser','required');
+        $this->form_validation->set_rules('inputFriend','Friend','required');
+
+        if($this->form_validation->run()===true)
+        {
+			$post_data = array(
+                'User_id' => $this->input->post('inputIdUser'),
+				'friend_id' => $this->input->post('inputFriend'),
+			);
+		
+			$this->addFriend_form($post_data);
+		}
+		else
+		{
+			$this->addFriend();
+		}
+	}
+
+	function addFriend_form($post_data)
+    {
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users . '/addFriend/');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
+		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+		$response = curl_exec($con);
+		curl_close($con);
+
+		$result = json_decode($response,TRUE);
+		// NEEDS TO BE DONE IN A VIEW
+		echo '<br>';
+		echo "Friend was  added :D ";
+		echo '<br>';
+		echo"
+		<form action='http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/addfriend'>
+		<input type=submit value='Add more friends' />
+		</form>";
+		
+	}
+
 	function validateSpecificUserSearch()
 	{
 		$this->form_validation->set_rules('idSpecificUser', 'required');
