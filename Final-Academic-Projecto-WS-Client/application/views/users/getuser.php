@@ -28,7 +28,9 @@
 
     <?php } ?>
 
-
-
     </tbody>
 </table>
+
+<form action="">
+	<input type="text" value=""><button class="btn btn-sucess">SEARCH SPECIFIC USER</button>
+</form>
