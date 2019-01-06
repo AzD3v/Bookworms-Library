@@ -98,22 +98,6 @@
 	</div>
 
 	<div class="row">
-		<div class="col-lg-12">
-			<div class="form-group">
-				<?php $name = 'bookCover'; ?>
-				<?php echo form_label('Book Cover', $name, array('class' => 'col-xs-6 col-lg-3 control-label')); ?>
-				<div class="col-xs-6 col-lg-9">
-					<?php
-					$value = set_value($name);
-					$opts = 'class="form-control" id="' . $name . '" placeholder="Book Cover" ';
-					echo form_upload($name, $value, $opts);
-					?>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group row">
 				<?php echo form_label('Reader ID', 'readerId',
@@ -121,6 +105,22 @@
 				<div class="col-lg-9">
 					<?php echo form_input('readerId', set_value('readerId'),
 						'class="form-control" placeholder="The ID of the person who is uploading this book"');?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="form-group">
+				<?php $name = 'bookCover'; ?>
+				<?php echo form_label('Book Cover', $name, array('class' => 'col-xs-6 col-lg-3 control-label')); ?>
+				<div class="col-xs-6 col-lg-9">
+					<?php
+					$value = set_value($name);
+					$opts = 'class="form-control" id="' . $name . '" placeholder="Cover" ';
+					echo form_upload($name, $value, $opts);
+					?>
 				</div>
 			</div>
 		</div>

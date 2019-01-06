@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0b793993-2b29-414d-b265-be779b69df0c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/controllers/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/controllers/Book.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_success.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_success.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/models/api/Book_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/models/api/Book_model.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,54 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/controllers/Book.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="195" column="57" lean-forward="true" selection-start-line="195" selection-start-column="57" selection-end-line="195" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_form.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="122" column="106" selection-start-line="122" selection-start-column="106" selection-end-line="122" selection-end-column="106" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="40" column="49" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/models/api/Book_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/models/api/User_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-333" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-670">
-              <caret line="108" column="25" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
+            <state relative-caret-position="143">
+              <caret line="38" column="42" lean-forward="true" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -90,11 +44,11 @@
       <list>
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/users/getuser.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/controllers/Users.php" />
-        <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/controllers/Book.php" />
-        <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_success.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/models/api/Book_model.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php" />
+        <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/controllers/Book.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_form.php" />
+        <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_success.php" />
       </list>
     </option>
   </component>
@@ -102,10 +56,9 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="267" />
-    <option name="width" value="1211" />
-    <option name="height" value="632" />
+    <option name="y" value="27" />
+    <option name="width" value="683" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -123,39 +76,6 @@
             <path>
               <item name="Bookworms-Library" type="b2602c69:ProjectViewProjectNode" />
               <item name="Bookworms-Library" type="462c0819:PsiDirectoryNode" />
-              <item name="Final-Academic-Projecto-WS-Client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bookworms-Library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bookworms-Library" type="462c0819:PsiDirectoryNode" />
-              <item name="Final-Academic-Projecto-WS-Client" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bookworms-Library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bookworms-Library" type="462c0819:PsiDirectoryNode" />
-              <item name="Final-Academic-Projecto-WS-Client" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bookworms-Library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bookworms-Library" type="462c0819:PsiDirectoryNode" />
-              <item name="Final-Academic-Projecto-WS-Client" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bookworms-Library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bookworms-Library" type="462c0819:PsiDirectoryNode" />
-              <item name="Final-Academic-Projecto-WS-Client" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="book" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bookworms-Library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bookworms-Library" type="462c0819:PsiDirectoryNode" />
               <item name="Final-Academic-Projecto-WS-Server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -177,21 +97,6 @@
               <item name="Final-Academic-Projecto-WS-Server" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bookworms-Library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bookworms-Library" type="462c0819:PsiDirectoryNode" />
-              <item name="Final-Academic-Projecto-WS-Server" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bookworms-Library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bookworms-Library" type="462c0819:PsiDirectoryNode" />
-              <item name="Final-Academic-Projecto-WS-Server" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -203,7 +108,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Current-Projects/PHP-Basic-Projects/Universidade/Web-Services/Source-Code/Academic-Project-1" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -231,12 +136,12 @@
       <updated>1546731635527</updated>
       <workItem from="1546731644294" duration="8695000" />
       <workItem from="1546798756930" duration="2103000" />
-      <workItem from="1546813176850" duration="2060000" />
+      <workItem from="1546813176850" duration="3652000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12858000" />
+    <option name="totallyTimeSpent" value="14450000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
@@ -322,13 +227,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_success.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-670">
@@ -343,29 +241,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/models/api/Book_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+        <state relative-caret-position="224">
+          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/controllers/Book.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="195" column="57" lean-forward="true" selection-start-line="195" selection-start-column="57" selection-end-line="195" selection-end-column="57" />
+        <state relative-caret-position="198">
+          <caret line="197" column="59" selection-start-line="197" selection-start-column="59" selection-end-line="197" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php">
+    <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/upload/login-bg.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_success.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="40" column="49" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="49" />
+        <state relative-caret-position="308">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="122" column="106" selection-start-line="122" selection-start-column="106" selection-end-line="122" selection-end-column="106" />
+        <state relative-caret-position="2313">
+          <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="38" column="42" lean-forward="true" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
         </state>
       </provider>
     </entry>

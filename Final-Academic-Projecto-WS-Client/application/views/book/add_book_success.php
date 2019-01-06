@@ -6,6 +6,6 @@
 
 	<body>
 		<h3>Your book insertion request is under approval!</h3>
-		<p><?php echo anchor('book/add_book_form', 'Add another book! :)'); ?></p>
+		<p><?php echo anchor('book/addbookform', 'Add another book! :)'); ?></p>
 	</body>
 </html>
