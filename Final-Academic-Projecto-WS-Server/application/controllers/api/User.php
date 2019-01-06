@@ -39,7 +39,7 @@ class User extends REST_Controller {
         $id = $this->get('id');
 
         $id_user = $this->get('id_user');
-        
+
         if($id_user == NULL)
         {
              $message = 
@@ -53,6 +53,8 @@ class User extends REST_Controller {
         else
         {
 
+        
+
             if ($id == NULL)
             {
 
@@ -62,6 +64,7 @@ class User extends REST_Controller {
                 {
                     $users = $this->user_model->getUsers();
                     $this->set_response($users, REST_CONTROLLER::HTTP_OK);
+                    return;
                 }
                 else
                 {
@@ -82,6 +85,7 @@ class User extends REST_Controller {
                 {
                     $users = $this->user_model->getUser($id);
                     $this->set_response($users, REST_CONTROLLER::HTTP_OK);
+                    return;
                 }
                 else
                 {
