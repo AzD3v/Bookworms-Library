@@ -22,7 +22,7 @@ class Book_model extends CI_Model {
 
     function addBook($book, $genders)
     {
-        $ret = $this->db->insert('book', $book);
+        $ret = $this->db->insert('Book', $book);
         if (!$ret)
             return -1;
 
@@ -42,30 +42,9 @@ class Book_model extends CI_Model {
         return $book_id;
     }
 
-    function getMovies($id = 0)
+    function getBook($id = 0)
     {
-        $this->db->select("m.id, m.photo, m.title, m.year, m.description,
-            m.imdb_id, m.user_id, u.name,
-            group_concat(distinct g.name) as genders,
-            ifnull(round(avg(r.rating), 1), '') as rating", FALSE);
-        $this->db->from('movie as m');
-        $this->db->join('users as u', 'u.id=m.user_id');
-        $this->db->join('rating as r', 'r.movie_id=m.id', 'LEFT');
-        $this->db->join('movie_has_gender as mh', 'm.id=mh.movie_id', 'LEFT');
-        $this->db->join('gender as g', 'g.id=mh.gender_id', 'LEFT');
 
-        if ($id != 0)
-            $this->db->where('m.id', $id);
-
-        $this->db->group_by('m.id, m.photo, m.title, m.year, m.description, m.imdb_id, m.user_id, u.name ');
-        $query = $this->db->get();
-        // echo $this->db->last_query(); exit();
-
-        $movies = array();
-        foreach ($query->result() as $t)
-            $movies[] = (array) $t;
-
-        return $movies;
     }
 
 	// TODO: NEEDS WORK

@@ -114,6 +114,19 @@
 	</div>
 
 	<div class="row">
+		<div class="col-lg-6">
+			<div class="form-group row">
+				<?php echo form_label('Reader ID', 'readerId',
+					array('class' => 'col-lg-3 control-label'));?>
+				<div class="col-lg-9">
+					<?php echo form_input('readerId', set_value('readerId'),
+						'class="form-control" placeholder="The ID of the person who is uploading this book"');?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
 		<div class="col-lg-12">
 			<p class="text-center">
 				<br>

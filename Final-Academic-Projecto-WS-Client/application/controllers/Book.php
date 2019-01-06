@@ -179,7 +179,7 @@ class Book extends CI_Controller
 
 	function validateNewBook()
 	{
-		$this->form_validation->set_rules('bookName', 'Book Name', 'required|alpha_numeric');
+		$this->form_validation->set_rules('bookName', 'Book Name', 'required');
 		$this->form_validation->set_rules('bookAuthor', 'Book Author', 'required');
 		$this->form_validation->set_rules('bookGenreId', 'Book Genre ID', 'required|numeric');
 		$this->form_validation->set_rules('bookDescription', 'Book Description', 'required');
@@ -194,7 +194,8 @@ class Book extends CI_Controller
 				'genre_id' => $this->input->post('bookGenreId'),
 				'description' => $this->input->post('bookDescription'),
 				'isbn' => $this->input->post('bookIsbn'),
-				'register' => $this->input->post('bookRegister')
+				'register' => $this->input->post('bookRegister'),
+				'reader_id' => $this->input->post('readerId'),
 			);
 
 			if (isset($_FILES) && $_FILES['bookCover']['error'] == 0) {
