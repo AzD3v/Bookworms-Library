@@ -19,70 +19,67 @@ require APPPATH . 'libraries/Format.php';
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  */
-class Book extends REST_Controller {
+class Book extends REST_Controller
+{
 
-    function __construct()
-    {
-        // Construct the parent class
-        parent::__construct();
+	function __construct()
+	{
+		// Construct the parent class
+		parent::__construct();
 
-        $this->load->model('api/user_model');
-    }
-    //To get here
-    //http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book/addbook
-    function addBook_post()
-    {
-        $book = array(
-            'name' => $this->post('name'),
-            'author' => $this->post('author'),
-            'isbn' => $this->post('isbn'),
-            'cover' => $this->post('cover'),
-            'imdb_id' => $this->post('imdb_id'),
-            'reader_id' => $this->post('reader_id'),
-            'admin_id' => $this->post('admin_id')
-            
-        );
-        $genders = $this->post('gender_id');
+		$this->load->model('api/book_model');
+	}
+	//To get here
+	//http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book/addbook
+	function addBook_post()
+	{
+		$book = array(
+			'name' => $this->post('name'),
+			'author' => $this->post('author'),
+			'isbn' => $this->post('isbn'),
+			'cover' => $this->post('cover'),
+			'reader_id' => $this->post('reader_id'),
+			// 'admin_id' => $this->post('admin_id')
+		);
+		$genders = $this->post('gender_id');
 
-        if ($book['name'] == '' || $book['author'] == '' ||
-            $book['isbn'] == '' || $book == 'reader_id' || $book =='admin_id')
-        {
-            $message = [
-                'id' => -1,
-                'message' => 'It was not given the required fields'
-            ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-            return;
-        }
+		if ($book['name'] == '' || $book['author'] == '' ||
+			$book['isbn'] == '' || $book == 'reader_id' || $book == 'admin_id') {
+			$message = [
+				'id' => -1,
+				'message' => 'It was not given the required fields'
+			];
+			$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+			return;
+		}
 
-        $ret = $this->book_model->addBook($book, $genders);
-        if ($ret < 0)
-        {
-            $message = [
-                'id' => -2,
-                'message' => 'it was not possible to register your book',
-            ];
+		$ret = $this->book_model->addBook($book, $genders);
+		if ($ret < 0) {
+			$message = [
+				'id' => -2,
+				'message' => 'it was not possible to register your book',
+			];
 
-            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-        }
-        else
-        {
-            $message = [
-                'id' => 0,
-                'message' => 'Book Registered'
-            ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_CREATED); // Create 201 (being the HTTP code)
-        }
+			$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+		} else {
+			$message = [
+				'id' => 0,
+				'message' => 'Book Registered'
+			];
+			$this->set_response($message, REST_CONTROLLER::HTTP_CREATED); // Create 201 (being the HTTP code)
+		}
 
-    }
+	}
 
-    function addRate_post()
-    {
-        $book = array(
-            'reader_id' => $this->post('reader_id'),
-            'book_id' => $this->post('book_id'),
-            'rating_value' => $this->post('rating_value'),
-            'rating_date'=>$this->post('rating_date')
-        );
-        
+	function addRate_post()
+	{
+		$book = array(
+			'reader_id' => $this->post('reader_id'),
+			'book_id' => $this->post('book_id'),
+			'rating_value' => $this->post('rating_value'),
+			'rating_date' => $this->post('rating_date')
+		);
+
+	}
+
 }
