@@ -28,7 +28,13 @@
 
     <?php } ?>
 
-
-
     </tbody>
 </table>
+
+<?php echo form_open("users/validateSpecificUserSearch/",'role="form" class="form-horizontal"');?>
+
+<?php echo form_input('idSpecificUser', set_value('idSpecificUser'));?>
+
+<button type="submit" class="btn btn-success">SEARCH SPECIFIC USER</button>
+
+<?php echo form_close();?>

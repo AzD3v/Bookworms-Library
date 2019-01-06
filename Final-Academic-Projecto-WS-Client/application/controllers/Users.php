@@ -69,6 +69,42 @@ class Users extends CI_Controller
 
 	}
 
+	function validateSpecificUserSearch()
+	{
+		$this->form_validation->set_rules('idSpecificUser', 'required');
+
+		if ($this->form_validation->run() === TRUE) {
+			$post_data = array (
+				'id' => $this->input->post('idSpecificUser')
+			);
+
+			$this->getSpecificUser($post_data);
+
+		}
+	}
+
+	function getSpecificUser($post_data)
+	{
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. 'id_user/1');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($con, CURLOPT_POST, TRUE);
+		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+		$response = curl_exec($con);
+		if (!curl_errno($con)){
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)){
+				case 201: break;
+				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
+			}
+		}
+
+		curl_close($con);
+
+		$this->load->view('geral/header');
+		$this->load->view('users/getuser');
+		$this->load->view('geral/footer');
+	}
+
 	function addUser($post_data)
 	{
 		//echo $this->api_url_users; exit;
