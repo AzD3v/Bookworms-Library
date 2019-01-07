@@ -313,7 +313,7 @@ class User extends REST_Controller {
                 'message' => 'User added with sucess to your friends list'
                 ];
 
-                $this->set_response($message, REST_CONTROLLER::HTTP_CREATE);
+                $this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
                 return;
             }
         }
