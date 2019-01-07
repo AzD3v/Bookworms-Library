@@ -1,3 +1,7 @@
+<?php echo form_open("users/validateSpecificUserSearch/",'role="form" class="form-horizontal"');
+
+?>
+
 <link rel="stylesheet" href="../../../assets/css/geral.css">
 
 <div class="page-header">
@@ -18,30 +22,25 @@
 
     <?php
 
-	   if (isset($users))
+	   if (isset($user))
 	   {
 		   
-	   foreach ($users as $user) {
+	   foreach ($user as $specific_user) {
 
     ?>
 
     <tr>
-        <td><?php echo $user['name']; ?></td>
-        <td><?php echo $user['email']; ?></td>
+        <td><?php echo $specific_user['name']; ?></td>
+        <td><?php echo $specific_user['email']; ?></td>
 		<td>
 			<a class="btn btn-info"
-			   href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/edituserform/id_user/<?php $user['id']; ?>">
+			   href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/edituserform/id_user/<?php $specific_user['id']; ?>">
 				Edit User
 			</a>
 		</td>
     </tr>
 
-    <?php } } ?>
-
-    </tbody>
-</table>
-
-<?php echo form_open("users/validateSpecificUserSearch/",'role="form" class="form-horizontal"'); ?>
+<?php } } ?>
 
 <div class="row">
 	<div class="col-lg-6">
