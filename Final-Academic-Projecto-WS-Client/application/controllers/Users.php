@@ -110,26 +110,19 @@ class Users extends CI_Controller
 		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
 		$response = curl_exec($con);
 		
-		if (!curl_errno($con)){
-			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)){
+		if (!curl_errno($con))
+		{
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE))
+			{
 				case 201: break;
 				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
 			}
+	
+			$data = array(
+				'message' => json_decode($response,TRUE)
+			);
+			$this->load->view('users/add_friend_success',$data);		
 		}
-
-		
-		var_dump($response);	
-			
-			curl_close($con);
-			
-			$result = json_decode($response,TRUE);
-			// NEEDS TO BE DONE IN A VIEW
-			echo"
-			<form action='http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/addfriend'>
-				<input type=submit value='Add more friends' />
-				</form>";
-		
-		
 	}
 
 	function validateSpecificUserSearch()
