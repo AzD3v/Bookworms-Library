@@ -1,5 +1,5 @@
 <?php echo form_open("users/validateSpecificUserSearch/",'role="form" class="form-horizontal"');
-
+var_dump($user);
 ?>
 
 <link rel="stylesheet" href="../../../assets/css/geral.css">
@@ -40,12 +40,12 @@
 		</td>
     </tr>
 
-    <?php } } ?>
+    <?php } }?>
 
     </tbody>
 </table>
 
-<!-- <div class="row">
+<div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
 			<?php echo form_label('id', 'inputIdSpecificUser', array('class' => 'col-lg-3 control-label'));?>
@@ -56,6 +56,6 @@
 	</div>
 </div>
 
-<button type="submit" class="btn btn-success">SEARCH SPECIFIC USER</button> -->
+<button type="submit" class="btn btn-success">SEARCH SPECIFIC USER</button>
 
 <?php echo form_close();?>

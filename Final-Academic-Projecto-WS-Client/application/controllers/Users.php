@@ -130,11 +130,11 @@ class Users extends CI_Controller
 		$this->form_validation->set_rules('inputIdSpecificUser','id', 'required');
 
 		if ($this->form_validation->run() === TRUE) {
-			$post_data = array (
-				'id' => $this->input->post('inputIdSpecificUser')
-			);
+			
+			$id = $this->input->post('inputIdSpecificUser');
+			
 
-			$this->getSpecificUser($post_data);
+			$this->getSpecificUser($id);
 
 		}
 
@@ -144,13 +144,11 @@ class Users extends CI_Controller
 		}
 	}
 
-	function getSpecificUser($post_data)
+	function getSpecificUser($id)
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. 'id_user/1');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. 'id_user/1/' .'id/'.$id);
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($con, CURLOPT_POST, TRUE);
-		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
 		$response = curl_exec($con);
 		if (!curl_errno($con)){
 			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)){
