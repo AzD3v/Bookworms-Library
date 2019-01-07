@@ -225,7 +225,7 @@ class Users extends CI_Controller
 				'email' => $this->input->post('inputEmail'),
 				'password' => $this->input->post('inputPassword'),
 				'birthdate' => $this->input->post('inputBirth'),
-				'status' => $this->input->post('inputStatus'),
+				'status' => $this->input->post('inputStatus')
 			);
 
 			$this->addUser($post_data);
@@ -237,7 +237,6 @@ class Users extends CI_Controller
 
 	}
 
-	// TODO: ALL EDIT METHODS NEED WORK
 	function editUser($post_data)
 	{
 		$con = curl_init();

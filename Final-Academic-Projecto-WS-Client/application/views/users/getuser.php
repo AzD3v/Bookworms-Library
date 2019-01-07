@@ -13,7 +13,8 @@
     <thead>
         <tr>
             <th scope="col">Name</th>
-            <th scope="col">Email</th>
+			<th scope="col">Email</th>
+			<th scope="col">Edit User</th>
         </tr>
     </thead>
 
@@ -21,16 +22,22 @@
 
     <?php
 
-	   if(isset($users))
+	   if (isset($users))
 	   {
 		   
-	   foreach($users as $user) {
+	   foreach ($users as $user) {
 
     ?>
 
     <tr>
         <td><?php echo $user['name']; ?></td>
         <td><?php echo $user['email']; ?></td>
+		<td>
+			<a class="btn btn-info"
+			   href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/edituserform/id_user/<?php $user['id']; ?>">
+				Edit User
+			</a>
+		</td>
     </tr>
 
     <?php } } ?>
@@ -38,8 +45,7 @@
     </tbody>
 </table>
 
-
-<div class="row">
+<!-- <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
 			<?php echo form_label('id', 'inputIdSpecificUser', array('class' => 'col-lg-3 control-label'));?>
@@ -50,6 +56,6 @@
 	</div>
 </div>
 
-<button type="submit" class="btn btn-success">SEARCH SPECIFIC USER</button>
+<button type="submit" class="btn btn-success">SEARCH SPECIFIC USER</button> -->
 
 <?php echo form_close();?>

@@ -97,7 +97,6 @@ class User_model extends CI_Model {
         return $ret = 0;
     }
 
-    // TODO: NEEDS WORK
 	public function editUser($id_user, $id_profile, $name, $email, $password)
 	{
 		$this->db->update('User');
@@ -105,7 +104,7 @@ class User_model extends CI_Model {
 		$this->db->set('user.name = '.$name.'');
 		$this->db->set('user.email = '.$email.'');
 		$this->db->set('user.password = '.$password.'');
-		$this->db->where('u.id = '.$id_user.'');
+		$this->db->where('User.id = '.$id_user.'');
 
 		return $ret = 0;
 	}
