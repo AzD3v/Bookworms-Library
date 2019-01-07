@@ -87,8 +87,10 @@ class Users extends CI_Controller
         if($this->form_validation->run()===true)
         {
 			$post_data = array(
-                'User_id' => $this->input->post('inputIdUser'),
-				'friend_id' => $this->input->post('inputFriend'),
+
+                'id_user' => $this->input->post('inputIdUser'),
+				'id_friend' => $this->input->post('inputFriend'),
+
 			);
 		
 			$this->addFriend_form($post_data);
@@ -102,23 +104,34 @@ class Users extends CI_Controller
 	function addFriend_form($post_data)
     {
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_users . '/addFriend/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users . '/addfriend/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
 		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
 		$response = curl_exec($con);
-		curl_close($con);
 
-		$result = json_decode($response,TRUE);
-		// NEEDS TO BE DONE IN A VIEW
-		echo '<br>';
-		echo "Friend was  added :D ";
-		echo '<br>';
-		echo"
-		<form action='http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/addfriend'>
-		<input type=submit value='Add more friends' />
-		</form>";
-		
+		if (!curl_errno($con)){
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)){
+				case 201: break;
+				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
+			}
+		}
+		else {
+
+			
+			curl_close($con);
+			
+			$result = json_decode($response,TRUE);
+			// NEEDS TO BE DONE IN A VIEW
+			echo '<br>';
+			echo "Friend was  added :D ";
+			echo '<br>';
+			echo"
+			<form action='http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/addfriend'>
+				<input type=submit value='Add more friends' />
+				</form>";
+				
+		}
 	}
 
 	function validateSpecificUserSearch()
@@ -214,7 +227,7 @@ class Users extends CI_Controller
 				'email' => $this->input->post('inputEmail'),
 				'password' => $this->input->post('inputPassword'),
 				'birthdate' => $this->input->post('inputBirth'),
-				'status' => $this->input->post('inputStatus'),
+				'status' => $this->input->post('inputStatus')
 			);
 
 			$this->addUser($post_data);
@@ -226,7 +239,6 @@ class Users extends CI_Controller
 
 	}
 
-	// TODO: ALL EDIT METHODS NEED WORK
 	function editUser($post_data)
 	{
 		$con = curl_init();
