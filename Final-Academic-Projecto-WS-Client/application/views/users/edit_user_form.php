@@ -12,7 +12,8 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 
 <div class="row">
 	<div class="col col-lg-12">
-		<h2>Add new user</h2>
+		<h2>Edit User</h2>
+		<?php echo $_GET['id_user']; ?>
 	</div>
 </div>
 
