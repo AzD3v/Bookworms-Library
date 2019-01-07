@@ -36,7 +36,8 @@
 		margin: auto;
         padding: 30px;
 		text-align: center;
-    }
+		text-transform: uppercase;
+	}
 
     code {
         font-family: Consolas, Monaco, Courier New, Courier, monospace;

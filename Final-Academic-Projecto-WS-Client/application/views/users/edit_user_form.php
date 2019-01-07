@@ -8,6 +8,8 @@
 
 echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 
+<link rel="stylesheet" href="../../../assets/css/geral.css">
+
 <div class="row">
 	<div class="col col-lg-12">
 		<h2>Add new user</h2>

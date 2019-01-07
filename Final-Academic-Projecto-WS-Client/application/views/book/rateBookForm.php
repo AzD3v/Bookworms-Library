@@ -1,5 +1,7 @@
 <?php echo form_open("book/validate_rateBook/",'role="form" class="form-horizontal"');?>
 
+<link rel="stylesheet" href="../../../assets/css/geral.css">
+
 <div class="row">
     <div class="col col-lg-12">
         <h2>Rate Book</h2>

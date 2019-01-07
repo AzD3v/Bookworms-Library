@@ -1,6 +1,7 @@
 <html lang="en">
 
 	<head>
+		<link rel="stylesheet" href="../../../assets/css/geral.css">
 		<title>Bookworms | Add User Success</title>
 	</head>
 

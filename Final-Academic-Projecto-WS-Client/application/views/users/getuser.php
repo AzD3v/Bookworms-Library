@@ -8,7 +8,7 @@
     <h1 class="text-center mb-5">List of all Bookworms users</h1>
 </div>
 
-<table class="table table-dark">
+<table class="table table-hover table-bordered">
 
     <thead>
         <tr>
