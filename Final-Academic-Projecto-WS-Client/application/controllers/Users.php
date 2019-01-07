@@ -59,14 +59,13 @@ class Users extends CI_Controller
 			}
 		}
 
-		$data = array(
+		$data = array (
 			'users' => json_decode($response, true)
 		);
 
 		$this->load->view('geral/header');
 		$this->load->view('users/getuser', $data);
 		$this->load->view('geral/footer');
-
 	}
 
 	function addFriend()

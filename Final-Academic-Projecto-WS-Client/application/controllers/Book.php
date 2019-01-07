@@ -24,7 +24,7 @@ class Book extends CI_Controller
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	var $api_url_book;
+	var $api_url_books;
 
 	/**
 	 * Book constructor.
@@ -47,7 +47,7 @@ class Book extends CI_Controller
 	function getBooks()
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbook/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/getbooks/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {
@@ -72,7 +72,7 @@ class Book extends CI_Controller
 	function getBookInfo() // TODO: CODE THIS
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbook/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/getbook/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {

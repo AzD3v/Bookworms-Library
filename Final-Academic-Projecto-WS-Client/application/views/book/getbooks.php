@@ -16,6 +16,7 @@
              <th>User</th>
 
          </thead>
+		   <?php var_dump($books); ?>
          <?php foreach ($books as $b) { ?>
            <tr>
                <td><?php echo $b['id'];?></td>
