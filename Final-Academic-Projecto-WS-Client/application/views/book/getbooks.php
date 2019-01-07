@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../../assets/css/geral.css">
+
 <div class="row">
      <div class="col-lg-12">
        <br />

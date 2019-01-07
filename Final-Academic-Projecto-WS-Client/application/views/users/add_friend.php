@@ -1,8 +1,10 @@
 <?php echo form_open("users/validate_addFriend/",'role="form" class="form-horizontal"');?>
 
+<link rel="stylesheet" href="../../../assets/css/geral.css">
+
 <div class="row">
     <div class="col col-lg-12">
-        <h2>Add a Friend :D</h2>
+        <h2>Add a Friend to your list!</h2>
         <br>
     </div>
 </div>
