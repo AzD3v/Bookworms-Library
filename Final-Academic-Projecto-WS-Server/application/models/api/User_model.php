@@ -86,9 +86,14 @@ class User_model extends CI_Model {
         return $ret = 0;
     }
 //**** ADD FRIEND MODEL monkaS doesn't work */
-    function addFriend($User, $Friend)
+    function addFriend($id_friend, $id_user)
     {
-        $this->db->insert_batch('User_has_Friend', $User,$Friend); 
+        $addFriend = array (
+            'user_id' => $id_user,
+            'friend_id' => $id_friend
+        );
+
+        $ret = $this->db->insert('User_has_Friend', $addFriend);
         return $ret = 0;
     }
 

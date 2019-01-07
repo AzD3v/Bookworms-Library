@@ -87,8 +87,10 @@ class Users extends CI_Controller
         if($this->form_validation->run()===true)
         {
 			$post_data = array(
-                'User_id' => $this->input->post('inputIdUser'),
-				'friend_id' => $this->input->post('inputFriend'),
+
+                'id_user' => $this->input->post('inputIdUser'),
+				'id_friend' => $this->input->post('inputFriend'),
+				
 			);
 		
 			$this->addFriend_form($post_data);
@@ -102,7 +104,7 @@ class Users extends CI_Controller
 	function addFriend_form($post_data)
     {
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_users . '/addFriend/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users . '/addfriend/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
 		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));

@@ -287,11 +287,11 @@ class User extends REST_Controller {
 /***** monkaS welp please why this no work :( */
     function addFriend_post()
     {
-        $User = $this->post('User_id');
+        $id_user = $this->post('id_user');
 
-         $Friend = $this->post('friend_id');
+        $id_friend = $this->post('id_friend');
 
-        if ($User == '' || $User == $Friend )
+        if ($id_user == '' || $id_user == $id_friend )
         {
             $message = [
                 'id' => -2,
@@ -299,35 +299,30 @@ class User extends REST_Controller {
             ];
             $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
             return;
-
-            if($id_profile == 1)
-            {
-                $ret = $this->user_model->addFriend($User, $Friend);
-                
-                if($ret == 0)
-                {
-                
-                    $message = 
-                    [
-                        'id' => 0,
-                        'message' => 'Edited User with success'
-                    ];
-                    
-                    $this->set_response($message, REST_CONTROLLER::HTTP_OK);
-                    return;
-                }
-                else
-                {
-                     $message = 
-                    [
-                        'id' => -3,
-                        'message' => 'Error editting User'
-                    ];
-                    
-                    $this->set_response($message, REST_CONTROLLER::HTTP_ERROR);
-                }
-            }
-
+  
         }
+
+        else
+        {
+            $ret = $this->user_model->addFriend($id_friend, $id_user);
+
+            if($ret == 0)
+            {   
+                 $message = [
+                'id' => 0,
+                'message' => 'User added with sucess to your friends list'
+                ];
+
+                $this->set_response($message, REST_CONTROLLER::HTTP_CREATE);
+                return;
+            }
+        }
+
+         
+
+    
+
+        
     }
+
 }
