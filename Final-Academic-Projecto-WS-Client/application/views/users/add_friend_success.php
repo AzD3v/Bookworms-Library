@@ -1,4 +1,4 @@
-<?php echo form_open("users/addFriend/",'role="form" class="form-horizontal"');?>
+<?php echo form_open("users/addFriend/",'role="form" class="form-horizontal"'); ?>
 
 <link rel="stylesheet" href="../../../assets/css/geral.css">
 

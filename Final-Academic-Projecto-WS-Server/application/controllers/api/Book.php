@@ -47,7 +47,6 @@ class Book extends REST_Controller
 			'author' => $this->post('author'),
 			'isbn' => $this->post('isbn'),
 			'reader_id' => $this->post('reader_id'),
-			// 'admin_id' => $this->post('admin_id'),
 			'cover' => $this->post('bookCover')
 		);
 		$genders = $this->post('gender_id');

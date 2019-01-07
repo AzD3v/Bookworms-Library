@@ -119,7 +119,7 @@ class Users extends CI_Controller
 			}
 	
 			$data = array(
-				'message' => json_decode($response,TRUE)
+				'message' => $response
 			);
 			$this->load->view('users/add_friend_success',$data);		
 		}
