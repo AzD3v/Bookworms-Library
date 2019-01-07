@@ -53,8 +53,6 @@ class User extends REST_Controller {
         else
         {
 
-        
-
             if ($id == NULL)
             {
 
