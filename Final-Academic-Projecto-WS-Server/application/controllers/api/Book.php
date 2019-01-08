@@ -43,16 +43,20 @@ class Book extends REST_Controller
 	function addBook_post()
 	{
 		$book = array(
+
 			'name' => $this->post('name'),
 			'author' => $this->post('author'),
+			'description' => $this->post('description'),
 			'isbn' => $this->post('isbn'),
 			'reader_id' => $this->post('reader_id'),
 			'cover' => $this->post('bookCover')
 		);
+		
 		$genders = $this->post('gender_id');
 
 		if ($book['name'] == '' || $book['author'] == '' ||
-			$book['isbn'] == '' || $book == 'reader_id' || $book == 'admin_id') {
+			$book['isbn'] == '' || $book['reader_id'] == '' || $book['description'] == '') {
+			
 			$message = [
 				'id' => -1,
 				'message' => 'The required fields were not given'
@@ -62,6 +66,7 @@ class Book extends REST_Controller
 		}
 
 		$ret = $this->book_model->addBook($book, $genders);
+
 		if ($ret < 0) {
 			$message = [
 				'id' => -2,
@@ -152,4 +157,5 @@ class Book extends REST_Controller
 		}
 	}
 
+}
 }

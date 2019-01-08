@@ -44,7 +44,7 @@ class Book_model extends CI_Model {
 
     function getBooks()
     {
-		$this->db->select("b.id, b.name, b.author, b.isbn, b.cover");
+		$this->db->select("b.id, b.name, b.author, b.description ,b.isbn, b.cover");
 		$this->db->from("Book as b");
 
 		$query = $this->db->get();
