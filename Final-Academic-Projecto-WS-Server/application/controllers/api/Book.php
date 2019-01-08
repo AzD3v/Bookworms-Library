@@ -32,7 +32,7 @@ class Book extends REST_Controller
 
 	function getBooks_get()
 	{
-		$id_user = $this->post('id_user');
+		$id_user = $this->get('id_user');
 
 		if($id_user == NULL)
 		{
@@ -118,9 +118,41 @@ class Book extends REST_Controller
 		);
 
 	}
-/**  alzheimer */
+
 	function setOwned_post()
 	{
+		$id_user = $this->post('id_user');
+		$id_book = $this->post('id_book');
+
+		if ($id_user == '')
+		{
+			$message = [
+				'id' => -2,
+				'message' => 'The required fields were not introduced or they were impossible to execute'
+			];
+			$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+			return;
+		}
+		else
+		{
+			$ret = $this->book_model->setOwned($id_user, $id_book);
+
+			if($ret == 0)
+			{   
+				 $message = [
+				'id' => 0,
+				'message' => 'Book added with success to user list'
+				];
+
+				$this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
+				return;
+			}
+		}
+	}
+
+	function setWished_post()
+	{
+
 		$id_user = $this->post('id_user');
 		$id_book = $this->post('id_book');
 
@@ -136,20 +168,49 @@ class Book extends REST_Controller
 
 		else
 		{
-			$ret = $this->book_model->setOwned_post($id_user, $id_book);
+			$ret = $this->book_model->setWished($id_user, $id_book);
 
 			if($ret == 0)
 			{   
-				 $message = [
+					$message = [
 				'id' => 0,
-				'message' => 'Book added with sucess to user list'
+				'message' => 'Book added with sucess to wish list of this user'
 				];
 
 				$this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
 				return;
 			}
 		}
+	}
 
+	function setRead_post()
+	{
+		$id_user = $this->post('id_user');
+		$id_book = $this->post('id_book');
+
+		if ($id_user == '')
+		{
+			$message = [
+				'id' => -2,
+				'message' => 'The required fields were not introduced or they were impossible to execute'
+			];
+			$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+			return;
+		}
+		else
+		{
+			$ret = $this->book_model->setRead($id_user, $id_book);
+
+			if($ret == 0)
+			{   
+				 $message = [
+				'id' => 0,
+				'message' => 'Read entry added with sucess to list'
+				];
+
+				$this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
+				return;
+			}
+		}
 	}
 }
-/** O FIX DA DORES DE CABEÇA DO  MIGUEL */

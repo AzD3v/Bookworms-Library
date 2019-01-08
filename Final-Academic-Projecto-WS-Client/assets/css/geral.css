@@ -45,7 +45,8 @@ label {
 	margin: 10px 0;
 }
 
-button {
+button.btn.btn-success,
+button.btn.btn-primary {
 	cursor: pointer;
 	font-size: 20px !important;
 }
