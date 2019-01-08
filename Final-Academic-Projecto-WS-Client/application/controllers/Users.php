@@ -135,6 +135,8 @@ class Users extends CI_Controller
 
 			$this->getSpecificUser($id);
 
+			$this->load->view('users/edit_user_form');
+
 		}
 
 		else

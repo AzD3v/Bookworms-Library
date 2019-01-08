@@ -142,7 +142,7 @@ class Book extends REST_Controller
 			{   
 				 $message = [
 				'id' => 0,
-				'message' => 'Book added with sucess to user list'
+				'message' => 'Book added with success to user list'
 				];
 
 				$this->set_response($message, REST_CONTROLLER::HTTP_CREATED);

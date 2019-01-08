@@ -10,7 +10,6 @@
         <tr>
             <th scope="col">Name</th>
 			<th scope="col">Email</th>
-			<th scope="col">Edit User</th>
         </tr>
     </thead>
 
@@ -28,12 +27,6 @@
     <tr>
         <td><?php echo $user['name']; ?></td>
         <td><?php echo $user['email']; ?></td>
-		<td>
-			<a class="btn btn-info"
-			   href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/edituserform/id_user/<?php $user['id']; ?>">
-				Edit User
-			</a>
-		</td>
     </tr>
 
     <?php } }?>
