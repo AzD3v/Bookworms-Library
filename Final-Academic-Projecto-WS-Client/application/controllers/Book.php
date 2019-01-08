@@ -69,7 +69,7 @@ class Book extends CI_Controller
 
 	}
 
-	function getBookInfo() // TODO: CODE THIS
+	function getBookInfo()
 	{
 		$con = curl_init();
 		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/getbook/');
