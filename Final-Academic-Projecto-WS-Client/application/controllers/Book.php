@@ -87,7 +87,7 @@ class Book extends CI_Controller
 
 	function setOwned()
 	{
-		$response = file_get_contents($this->api_url_books. '/getBooks/'. 'id_user/1');
+		$response = file_get_contents($this->api_url_books. '/getBooks/');
 		$data = array(
 			'books' => json_decode($response,TRUE)
 		);
@@ -141,7 +141,7 @@ class Book extends CI_Controller
 
 	function setWished()
 	{
-		$response = file_get_contents($this->api_url_books. '/getBooks/'. 'id_user/1');
+		$response = file_get_contents($this->api_url_books. '/getBooks/');
 		$data = array(
 			'books' => json_decode($response,TRUE)
 		);
