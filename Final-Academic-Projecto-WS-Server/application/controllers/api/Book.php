@@ -128,3 +128,4 @@ class Book extends REST_Controller
 
 	}
 }
+/** O FIX DA DORES DE CABEÇA DO  MIGUEL */
