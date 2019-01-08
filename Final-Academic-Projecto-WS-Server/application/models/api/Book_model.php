@@ -68,5 +68,15 @@ class Book_model extends CI_Model {
 
 		return $ret = 0;
 	}
+/** alzheimer */
+    function setOwned($id_user, $id_book)
+    {
+        $setowned = array (
+            'user_id' => $id_user,
+            'book_id' => $id_book
+        );
 
+        $ret = $this->db->insert('User_has_Book', $setowned);
+        return $ret = 0;
+    }
 }

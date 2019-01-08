@@ -94,5 +94,36 @@ class Book extends REST_Controller
 		);
 
 	}
+/**  alzheimer */
+	function setOwned_post()
+	{
+		$id_user = $this->post('id_user');
+		$id_book = $this->post('id_book');
+
+		if ($id_user == '')
+		{
+			$message = [
+				'id' => -2,
+				'message' => 'The required fields were not introduced or they were impossible to execute'
+			];
+			$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+			return;
+		}
+
+		else
+		{
+			$ret = $this->book_model->setOwned_post($id_user, $id_book);
+
+			if($ret == 0)
+			{   
+				 $message = [
+				'id' => 0,
+				'message' => 'Book added with sucess to user list'
+				];
+
+				$this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
+				return;
+			}
+		}
 
 }
