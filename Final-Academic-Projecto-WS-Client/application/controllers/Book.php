@@ -50,15 +50,7 @@ class Book extends CI_Controller
 		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/getbooks/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
-		if (!curl_errno($con)) {
-			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)) {
-				case 200:
-					break;
-				default:
-					echo "Unexpected HTTP code: ", $http_code, "\n";
-					exit;
-			}
-		}
+		
 
 		$data = array (
 			'books' => json_decode($response, true)
@@ -92,7 +84,7 @@ class Book extends CI_Controller
 		$this->load->view('book/getbooks', $data);
 		$this->load->view('geral/footer');
 	}
-/** alzheimer */	
+
 	function setOwned()
 	{
 		$response = file_get_contents($this->api_url_books. '/getBooks/'. 'id_user/1');
@@ -203,7 +195,7 @@ class Book extends CI_Controller
 	// ****  Rate Book ****
 	function rateBook()
     {
-		$response = file_get_contents($this->api_url_books . '/getBooks/');
+		$response = file_get_contents($this->api_url_books. '/getBooks/');
 		$data = array(
 			'books' => json_decode($response,TRUE)
 		);
