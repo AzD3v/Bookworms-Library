@@ -1,4 +1,4 @@
-<?php echo form_open("book/validate_rateBook/",'role="form" class="form-horizontal"');?>
+<?php echo form_open("book/validate_rateBook",'role="form" class="form-horizontal"');?>
 
 <link rel="stylesheet" href="../../../assets/css/geral.css">
 
