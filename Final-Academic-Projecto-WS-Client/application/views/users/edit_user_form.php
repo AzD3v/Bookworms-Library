@@ -6,16 +6,24 @@
  * Time: 21:19
  */
 
-echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
+echo form_open("Users/validateUserEdition",'role="form" class="form-horizontal"');
+
+foreach ($user as $user_to_edit) {
+
+	$user_to_edit_name = $user_to_edit['name'];
+	$user_to_edit_email = $user_to_edit['email'];
+	$user_to_edit_birthdate = $user_to_edit['birthdate'];
+	$user_to_edit_status = $user_to_edit['status'];
+	$user_to_edit_name = $user_to_edit['name'];
+
+}
+
+?>
 
 <link rel="stylesheet" href="../../../assets/css/geral.css">
 
-<div class="row">
-	<div class="col col-lg-12">
-		<h2>Edit User</h2>
-		<?php echo $_GET['id_user']; ?>
-	</div>
-</div>
+<br><br>
+<h2 class="text-center mt-10">Edit User</h2>
 
 <div class="row">
 	<div class="col-lg-12">
@@ -23,78 +31,66 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-lg-6">
-		<div class="form-group row">
-			<?php echo form_label('User Profile', 'inputProfile', array('class' => 'col-lg-3 control-label'));
-			$options = array(
-				'1'         => 'Admin',
-				'2'         => 'User',
-			);
+	<?php echo form_label('User Profile', 'inputProfile', array('class' => 'col-lg-3 control-label'));
+	$options = array(
+		'1'         => 'Admin',
+		'2'         => 'User',
+	);
 
-			?>
-			<div class="col-lg-9">
-				<?php echo form_dropdown('inputProfile', $options);?>
-			</div>
-	</div>
-</div>
+	?>
+		<?php echo form_dropdown('inputProfile', $options);?>
 
 <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
-			<?php echo form_label('Name', 'inputName', array('class' => 'col-lg-3 control-label'));?>
+			<?php
+			$opts = 'class="form-control" placeholder="'. $user_to_edit_name .'"';
+			echo form_label('Name', 'inputName', array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_input('inputName', set_value('inputName'), 'class="form-control"');?>
+				<?php echo form_input('inputName', set_value('inputName'), $opts);?>
 			</div>
 		</div>
 </div>
 
 <div class="col-lg-6">
 	<div class="form-group row">
-			<?php echo form_label('Email', 'inputEmail' ,array('class' => 'col-lg-3 control-label'));?>
+			<?php
+			$opts = 'class="form-control" placeholder="'. $user_to_edit_email .'"';
+			echo form_label('Email', 'inputEmail' ,array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_input('inputEmail', set_value('inputEmail'), 'class="form-control"');?>
+				<?php echo form_input('inputEmail', set_value('inputEmail'), $opts);?>
 			</div>
 		</div>
 	</div>
 </div>
-
 <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
-			<?php echo form_label('Password', 'inputPassword', array('class' => 'col-lg-3 control-label'));?>
+			<?php
+			$opts = 'class="form-control" placeholder="'. $user_to_edit_birthdate .'"';
+			echo form_label('Birthdate', 'inputBirthdate', array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_password('inputPassword', set_value('inputPassword'), 'class="form-control"');?>
+				<?php echo form_input('inputBirthdate', set_value('inputBirthdate'), $opts);?>
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="row">
-	<div class="col-lg-6">
-		<div class="form-group row">
-			<?php echo form_label('Password Retype', 'inputPasswordRewrite', array('class' => 'col-lg-3 control-label'));?>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="form-group row">
+			<?php
+			$opts = 'class="form-control" placeholder="'. $user_to_edit_status .'"';
+			echo form_label('Status', 'inputStatus', array('class' => 'col-lg-3 control-label'));?>
 			<div class="col-lg-9">
-				<?php echo form_password('inputPasswordRetype', set_value('inputPasswordRetype'), ' class="form-control"');?>
+				<?php echo form_input('inputStatus', set_value('inputStatus'), $opts);?>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- <div class="row">
-<div class="col-lg-6">
-<div class="form-group row">
-	<?php echo form_label('Status', 'inputStatus', array('class' => 'col-lg-3 control-label'));?>
-	<div class="col-lg-9">
-		<?php echo form_input('inputStatus', set_value('inputStatus'), 'class="form-control"');?>
-	</div>
-</div>
-</div> -->
 
 <div class="row">
 	<div class="col-lg-12">
 		<p class="text-center">
-			<br>
-			<button type="submit" class="btn btn-primary">Edit user!</button>
+			<button type="submit" class="btn btn-success">Edit User!</button>
 		</p>
 	</div>
 </div>

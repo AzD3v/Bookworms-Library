@@ -22,7 +22,6 @@ if (isset($user))
 			<th scope="col">Email</th>
 			<th scope="col">Birthdate</th>
 			<th scope="col">Status</th>
-			<th scope="col">Edit User</th>
         </tr>
     </thead>
 
@@ -46,12 +45,6 @@ if (isset($user))
 		<td><?php echo $specific_user['email']; ?></td>
 		<td><?php echo $specific_user['birthdate']; ?></td>
 		<td><?php echo $specific_user['status']; ?></td>
-		<td>
-			<a class="btn btn-info"
-			   href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/edituserform/id_user/<?php $specific_user['id']; ?>">
-				Edit User
-			</a>
-		</td>
 	</tr>
 
 	</tbody>
@@ -73,7 +66,7 @@ if (isset($user))
 	</div>
 </div>
 
-<button type="submit" class="btn btn-success">SEARCH ANOTHER SPECIFIC USER</button>
+<button type="submit" class="btn btn-success">CHECK SPECIFIC USER INFORMATION</button>
 
 <?php echo form_close();?>
 
