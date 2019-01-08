@@ -32,10 +32,32 @@ class Book extends REST_Controller
 
 	function getBooks_get()
 	{
-		$books = $this->book_model->getBooks();
+		$id_user = $this->post('id_user');
 
-		// Set the response and exit
-		$this->response($books, REST_Controller::HTTP_OK); // OK (200)
+		if($id_user == NULL)
+		{
+			$books = $this->book_model->getApprovedBooks();
+			$this->response($books, REST_Controller::HTTP_OK); // OK (200)
+		}
+		
+		else
+		{
+			$id_profile = $this->user_model->validate_user($id_user);
+
+			if($id_profile == 1)
+			{
+				$books = $this->book_model->getBooks();
+				$this->response($books, REST_Controller::HTTP_OK);
+			}
+			else
+			{
+				$books = $this->book_model->getApprovedBooks();
+				$this->response($books, REST_Controller::HTTP_OK);
+			}
+			
+		}
+
+
 	}
 
 	//To get here
@@ -51,6 +73,8 @@ class Book extends REST_Controller
 			'reader_id' => $this->post('reader_id'),
 			'cover' => $this->post('bookCover')
 		);
+
+		$book['cover'] = base64_decode($book['cover']);
 		
 		$genders = $this->post('gender_id');
 
@@ -117,7 +141,7 @@ class Book extends REST_Controller
 			{   
 				 $message = [
 				'id' => 0,
-				'message' => 'Book added with sucess to user list'
+				'message' => 'Book added with success to user list'
 				];
 
 				$this->set_response($message, REST_CONTROLLER::HTTP_CREATED);

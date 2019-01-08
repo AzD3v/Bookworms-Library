@@ -56,6 +56,21 @@ class Book_model extends CI_Model {
 		return $books;
     }
 
+    function getApprovedBooks()
+    {
+		$this->db->select("b.id, b.name, b.author, b.description ,b.isbn, b.cover");
+        $this->db->from("Book as b");
+        $this->db->where("b.admin_id IS NOT NULL");
+
+		$query = $this->db->get();
+
+		$books = array();
+		foreach ($query->result() as $t)
+			$books[] = (array) $t;
+
+		return $books;
+    }
+
 	// TODO: NEEDS WORK
 	public function editBook($id_user, $id_profile, $name, $email, $password)
 	{
