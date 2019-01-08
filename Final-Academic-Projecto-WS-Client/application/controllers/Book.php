@@ -69,7 +69,7 @@ class Book extends CI_Controller
 
 	}
 
-	function getBookInfo() // TODO: CODE THIS
+	function getBookInfo()
 	{
 		$con = curl_init();
 		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/getbook/');
@@ -184,7 +184,7 @@ class Book extends CI_Controller
 		$this->form_validation->set_rules('bookGenreId', 'Book Genre ID', 'required|numeric');
 		$this->form_validation->set_rules('bookDescription', 'Book Description', 'required');
 		$this->form_validation->set_rules('bookIsbn', 'ISBN (International Standard Book Number) of the book',
-											'required|alpha_numeric');
+											'required|numeric');
 		$this->form_validation->set_rules('bookRegister', 'Who is registering this book?', 'required');
 
 		if ($this->form_validation->run() === TRUE) {
