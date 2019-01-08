@@ -70,7 +70,6 @@ class Movieworld extends CI_Controller {
             'movies' => json_decode($response, true)
         );
         print_r($data);
-        exit();
         $this->load->view('geral/header');
         $this->load->view('movieworld/getmovie', $data);
         $this->load->view('geral/footer');

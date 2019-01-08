@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @property string api_url_book
+ * @property string api_url_books
  */
 
 class Book extends CI_Controller
@@ -24,7 +24,7 @@ class Book extends CI_Controller
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	var $api_url_book;
+	var $api_url_books;
 
 	/**
 	 * Book constructor.
@@ -34,7 +34,7 @@ class Book extends CI_Controller
 	{
 		parent::__construct();
 
-		$this->api_url_book = 'http://localhost/Book-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
+		$this->api_url_books = 'http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
 		// Helpers
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -42,12 +42,12 @@ class Book extends CI_Controller
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 	}
 
-
+	// ****  START OF  METHODS ****
 
 	function getBooks()
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbook/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/getbooks/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {
@@ -69,10 +69,10 @@ class Book extends CI_Controller
 
 	}
 
-	function getBookInfo() // TODO: CODE THIS
+	function getBookInfo()
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbook/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/getbook/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {
@@ -92,59 +92,170 @@ class Book extends CI_Controller
 		$this->load->view('book/getbooks', $data);
 		$this->load->view('geral/footer');
 	}
-
-	function rateBook()
-    {
-       $this->load->view('geral/header.php');
-       $response = file_get_contents($this->api_url_book . '/getBook/');
+/** alzheimer */	
+	function setOwned()
+	{
+		$response = file_get_contents($this->api_url_books. '/getBooks/'. 'id_user/1');
 		$data = array(
 			'books' => json_decode($response,TRUE)
 		);
+		$this->load->view('geral/header.php');
+		$this->load->view('book/owned_book',$data);
+		$this->load->view('geral/footer.php');
+	}
+
+	function validate_setOwned()
+	{
+        $this->form_validation->set_rules('inputIdUser','IdUser','required');
+        $this->form_validation->set_rules('inputBook','Book','required');
+
+        if($this->form_validation->run()===true)
+        {
+			$post_data = array(
+                'id_user' => $this->input->post('inputIdUser'),
+				'id_book' => $this->input->post('inputBook'),
+			);
+			$this->setOwned_form($post_data);
+		}
+		else
+		{
+			$this->setOwned();
+		}
+	}
+
+	function setOwned_form($post_data)
+    {
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/setOwned/');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
+		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+		$response = curl_exec($con);
+		
+		if (!curl_errno($con))
+		{
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE))
+			{
+				case 201: break;
+				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
+			}
 	
-       $this->load->view('book/rateBookForm',$data);
-       $this->load->view('geral/footer.php');
+			$data = array(
+				'message' => $response
+			);
+			$this->load->view('book/owned_book_success',$data);		
+		}
+	}
+
+	function setWhished()
+	{
+		$response = file_get_contents($this->api_url_books. '/getBooks/'. 'id_user/1');
+		$data = array(
+			'books' => json_decode($response,TRUE)
+		);
+		$this->load->view('geral/header.php');
+		$this->load->view('book/whish_book',$data);
+		$this->load->view('geral/footer.php');
+	}
+
+	function validate_setWhished()
+	{
+        $this->form_validation->set_rules('inputIdUser','IdUser','required');
+        $this->form_validation->set_rules('inputBook','Book','required');
+
+        if($this->form_validation->run()===true)
+        {
+			$post_data = array(
+                'id_user' => $this->input->post('inputIdUser'),
+				'id_book' => $this->input->post('inputBook'),
+			);
+			$this->setWished_form($post_data);
+		}
+		else
+		{
+			$this->setWhished();
+		}
+	}
+
+	function setWhised_form($post_data)
+    {
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/setWhished/');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
+		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+		$response = curl_exec($con);
+		
+		if (!curl_errno($con))
+		{
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE))
+			{
+				case 201: break;
+				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
+			}
+	
+			$data = array(
+				'message' => $response
+			);
+			$this->load->view('book/whish_book_success',$data);		
+		}
+	}
+	// ****  Rate Book ****
+	function rateBook()
+    {
+		$response = file_get_contents($this->api_url_books . '/getBooks/');
+		$data = array(
+			'books' => json_decode($response,TRUE)
+		);
+		$this->load->view('geral/header.php');
+		$this->load->view('book/rateBookForm',$data);
+		$this->load->view('geral/footer.php');
 	}
 	
 	function validate_rateBook()
 	{
         $this->form_validation->set_rules('inputIdUser','IdUser','required');
         $this->form_validation->set_rules('inputBook','Book','required');
-        $this->form_validation->set_rules('inputRate','Rating','required');
+		$this->form_validation->set_rules('inputRate','Rating','required');
+		$this->form_validation->set_rules('inputDate','Date','required');
 
         if($this->form_validation->run()===true)
         {
 			$post_data = array(
-                'idUser' => $this->input->post('inputTitle'),
-                'year' => $this->input->post('inputYear'),
-                'gender_id' => $this->input->post('inputGender'),
-                'description' => $this->input->post('inputDescription'),
-            );
-		} else
-		{
-			echo "Error while rating book";
+                'reader_id' => $this->input->post('inputIdUser'),
+				'book_id' => $this->input->post('inputBook'),
+				'rating_value' => $this->input->post('inputRate'),
+				'rating_date'=>$this->input->post('inputDate')
+			);
+		
+			$this->rateBook_form($post_data);
 		}
-		$this->rateBook($post_data);   
+		else
+		{
+			$this->rateBook();
+		}
 	}
 
 	function rateBook_form($post_data)
     {
-        $con = curl_init();
-        curl_setopt($con, CURLOPT_URL, $this->api_url.'/rateMovie/');
-        curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
-        curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
-        $response = curl_exec($con);
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books. '/rateBook/');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
+		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+		$response = curl_exec($con);
 		curl_close($con);
-		
-        $result = json_decode($response,TRUE);
-        echo "Book was rated with id : ".$result['id'];
-    }
 
+		$result = json_decode($response,TRUE);
+		echo "Book ".$result['book_id']." was rated ";
+	}
+	
+	// ****  Add Book ****
 	function addBook($post_data)
 	{
 
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/addbook/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/addbook/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($con, CURLOPT_POST, TRUE);
 		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
@@ -176,22 +287,23 @@ class Book extends CI_Controller
 
 	function validateNewBook()
 	{
-		$this->form_validation->set_rules('bookName', 'Book Name', 'required|alpha_numeric');
+		$this->form_validation->set_rules('bookName', 'Book Name', 'required');
 		$this->form_validation->set_rules('bookAuthor', 'Book Author', 'required');
 		$this->form_validation->set_rules('bookGenreId', 'Book Genre ID', 'required|numeric');
 		$this->form_validation->set_rules('bookDescription', 'Book Description', 'required');
 		$this->form_validation->set_rules('bookIsbn', 'ISBN (International Standard Book Number) of the book',
 											'required|alpha_numeric');
-		$this->form_validation->set_rules('bookRegister', 'Who is registering this book?', 'required');
+		$this->form_validation->set_rules('readerId', 'Reader ID', 'required');
 
 		if ($this->form_validation->run() === TRUE) {
+
 			$post_data = array(
 				'name' => $this->input->post('bookName'),
 				'author' => $this->input->post('bookAuthor'),
+				'isbn' => $this->input->post('bookIsbn'),
 				'genre_id' => $this->input->post('bookGenreId'),
 				'description' => $this->input->post('bookDescription'),
-				'isbn' => $this->input->post('bookIsbn'),
-				'register' => $this->input->post('bookRegister')
+				'reader_id' => $this->input->post('readerId'),
 			);
 
 			if (isset($_FILES) && $_FILES['bookCover']['error'] == 0) {
@@ -211,6 +323,10 @@ class Book extends CI_Controller
 					$post_data['bookCover'] = base64_encode(file_get_contents($upload_data['full_path'])
 					);
 				}
+			}
+			elseif(empty($_FILES['bookCover']))
+			{
+				echo "test";
 			}
 			else
 			{
@@ -232,7 +348,7 @@ class Book extends CI_Controller
 	{
 
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/editbook/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/editbook/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($con, CURLOPT_POST, TRUE);
 		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));

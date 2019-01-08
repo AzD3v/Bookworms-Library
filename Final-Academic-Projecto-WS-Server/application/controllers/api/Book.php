@@ -19,61 +19,113 @@ require APPPATH . 'libraries/Format.php';
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  */
-class Book extends REST_Controller {
+class Book extends REST_Controller
+{
 
-    function __construct()
-    {
-        // Construct the parent class
-        parent::__construct();
+	function __construct()
+	{
+		// Construct the parent class
+		parent::__construct();
 
-        $this->load->model('api/user_model');
-    }
-    //To get here
-    //http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book/addbook
-    function addBook_post()
-    {
-        $book = array(
-            'name' => $this->post('name'),
-            'author' => $this->post('author'),
-            'isbn' => $this->post('isbn'),
-            'cover' => $this->post('cover'),
-            'imdb_id' => $this->post('imdb_id'),
-            'reader_id' => $this->post('reader_id'),
-            'admin_id' => $this->post('admin_id')
-            
-        );
-        $genders = $this->post('gender_id');
+		$this->load->model('api/book_model');
+	}
 
-        if ($book['name'] == '' || $book['author'] == '' ||
-            $book['isbn'] == '' || $book == 'reader_id' || $book =='admin_id')
-        {
-            $message = [
-                'id' => -1,
-                'message' => 'It was not given the required fields'
-            ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-            return;
-        }
+	function getBooks_get()
+	{
+		$books = $this->book_model->getBooks();
 
-        $ret = $this->book_model->addBook($book, $genders);
-        if ($ret < 0)
-        {
-            $message = [
-                'id' => -2,
-                'message' => 'it was not possible to register your book',
-            ];
+		// Set the response and exit
+		$this->response($books, REST_Controller::HTTP_OK); // OK (200)
+	}
 
-            $this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-        }
-        else
-        {
-            $message = [
-                'id' => 0,
-                'message' => 'Book Registered'
-            ];
-            $this->set_response($message, REST_CONTROLLER::HTTP_CREATED); // Create 201 (being the HTTP code)
-        }
+	//To get here
+	//http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book/addbook
+	function addBook_post()
+	{
+		$book = array(
 
-    }
+			'name' => $this->post('name'),
+			'author' => $this->post('author'),
+			'description' => $this->post('description'),
+			'isbn' => $this->post('isbn'),
+			'reader_id' => $this->post('reader_id'),
+			'cover' => $this->post('bookCover')
+		);
+		
+		$genders = $this->post('gender_id');
 
+		if ($book['name'] == '' || $book['author'] == '' ||
+			$book['isbn'] == '' || $book['reader_id'] == '' || $book['description'] == '') {
+			
+			$message = [
+				'id' => -1,
+				'message' => 'The required fields were not given'
+			];
+			$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+			return;
+		}
+
+		$ret = $this->book_model->addBook($book, $genders);
+
+		if ($ret < 0) {
+			$message = [
+				'id' => -2,
+				'message' => 'it was not possible to register your book',
+			];
+
+			$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+		} else {
+			$message = [
+				'id' => 0,
+				'message' => 'Book Registered'
+			];
+			$this->set_response($message, REST_CONTROLLER::HTTP_CREATED); // Create 201 (being the HTTP code)
+		}
+
+	}
+
+	function addRate_post()
+	{
+		$book = array(
+			'reader_id' => $this->post('reader_id'),
+			'book_id' => $this->post('book_id'),
+			'rating_value' => $this->post('rating_value'),
+			'rating_date' => $this->post('rating_date')
+		);
+
+	}
+/**  alzheimer */
+	function setOwned_post()
+	{
+		$id_user = $this->post('id_user');
+		$id_book = $this->post('id_book');
+
+		if ($id_user == '')
+		{
+			$message = [
+				'id' => -2,
+				'message' => 'The required fields were not introduced or they were impossible to execute'
+			];
+			$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
+			return;
+		}
+
+		else
+		{
+			$ret = $this->book_model->setOwned_post($id_user, $id_book);
+
+			if($ret == 0)
+			{   
+				 $message = [
+				'id' => 0,
+				'message' => 'Book added with sucess to user list'
+				];
+
+				$this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
+				return;
+			}
+		}
+
+	}
 }
+/** O FIX DA DORES DE CABEÇA DO  MIGUEL */

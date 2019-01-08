@@ -8,10 +8,10 @@
 
 echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 
-<div class="row">
-	<div class="col col-lg-12">
-		<h2>Add new user</h2>
-	</div>
+<link rel="stylesheet" href="../../../assets/css/geral.css">
+
+<div class="page-header">
+	<h2 class="text-center mb-5">Add a new user</h2>
 </div>
 
 <div class="row">
@@ -110,13 +110,6 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 		</div>
 	</div> -->
 
-<div class="row">
-	<div class="col-lg-12">
-		<p class="text-center">
-			<br>
-			<button type="submit" class="btn btn-primary">Add new user!</button>
-		</p>
-	</div>
-</div>
+	<button type="submit" class="btn btn-success">ADD NEW USER!</button>
 
 <?php echo form_close(); ?>

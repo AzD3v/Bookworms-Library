@@ -1,8 +1,10 @@
 <?php echo form_open_multipart("Book/validateNewBook",'role="form" class="form-horizontal"');?>
 
+	<link rel="stylesheet" href="../../../assets/css/geral.css">
+
 	<div class="row">
 		<div class="col col-lg-12">
-			<h2 class="text-center mb-5">Insert a new book</h2>
+			<h2 class="text-center mb-5">Add a new book</h2>
 		</div>
 	</div>
 
@@ -15,10 +17,23 @@
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group row">
+				<?php echo form_label('Reader ID', 'readerId',
+					array('class' => 'col-lg-3 control-label'));?>
+				<div class="col-lg-9">
+					<?php echo form_input('readerId', set_value('readerId'),
+						'class="form-control" placeholder="The ID of the person who is requesting this book"');?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="form-group row">
 				<?php echo form_label('Book Name', 'bookName', array('class' => 'col-lg-3 control-label'));?>
 				<div class="col-lg-9">
 					<?php echo form_input('bookName', set_value('bookName'),
-						'class="form-control" placeholder="Insert here the name of the book you want to insert"');?>
+						'class="form-control" placeholder="Name of the book"');?>
 				</div>
 			</div>
 		</div>
@@ -74,24 +89,11 @@
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="form-group row">
-				<?php echo form_label('ISBN (International Standard Book Number) of the book', 'bookIsbn',
+				<?php echo form_label('ISBN of the book', 'bookIsbn',
 					array('class' => 'col-lg-3 control-label'));?>
 				<div class="col-lg-9">
 					<?php echo form_input('bookIsbn', set_value('bookIsbn'),
 						'class="form-control" placeholder="Enter here the ISBN of the book"');?>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="form-group row">
-				<?php echo form_label('Who is registering this book?', 'bookRegister',
-					array('class' => 'col-lg-3 control-label'));?>
-				<div class="col-lg-9">
-					<?php echo form_input('bookRegister', set_value('bookRegister'),
-						'class="form-control" placeholder="Enter your name here :)"');?>
 				</div>
 			</div>
 		</div>
@@ -105,7 +107,7 @@
 				<div class="col-xs-6 col-lg-9">
 					<?php
 					$value = set_value($name);
-					$opts = 'class="form-control" id="' . $name . '" placeholder="Book Cover" ';
+					$opts = 'class="form-control" id="' . $name . '" placeholder="Cover" ';
 					echo form_upload($name, $value, $opts);
 					?>
 				</div>
@@ -117,7 +119,7 @@
 		<div class="col-lg-12">
 			<p class="text-center">
 				<br>
-				<button type="submit" class="btn btn-primary">Register book!</button>
+				<button type="submit" class="btn btn-success">REGISTER NEW BOOK!</button>
 			</p>
 		</div>
 	</div>

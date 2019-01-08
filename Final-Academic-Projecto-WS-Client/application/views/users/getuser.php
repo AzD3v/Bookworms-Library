@@ -1,31 +1,59 @@
-<?php
+<link rel="stylesheet" href="../../../assets/css/geral.css">
 
-// echo "<pre>" . print_r($users, TRUE); . "</pre>";
+<div class="page-header">
+    <h1 class="text-center mb-5">List of all Bookworms users</h1>
+</div>
 
-/* if (isset($users['message'])) {
-    header( "");
-} */
-var_dump($users);
+<table class="table table-hover table-bordered">
 
-?>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Edit User</th>
+        </tr>
+    </thead>
 
-<h1>List of Bookworms users</h1>
+    <tbody>
+
+    <?php
+
+	   if (isset($users))
+	   {
+		   
+	   foreach ($users as $user) {
+
+    ?>
+
+    <tr>
+        <td><?php echo $user['name']; ?></td>
+        <td><?php echo $user['email']; ?></td>
+		<td>
+			<a class="btn btn-info"
+			   href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/edituserform/id_user/<?php $user['id']; ?>">
+				Edit User
+			</a>
+		</td>
+    </tr>
+
+    <?php } }?>
+
+    </tbody>
+</table>
+
+<?php echo form_open("users/validateSpecificUserSearch/",'role="form" class="form-horizontal"'); ?>
 
 <div class="row">
-	<div class="col-4">
-		<div class="list-group" id="list-tab" role="tablist">
-			<a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-			<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-			<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-			<a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-		</div>
-	</div>
-	<div class="col-8">
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
-			<div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-			<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-			<div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+	<div class="col-lg-6">
+		<div class="form-group row">
+			<?php echo form_label('id', 'inputIdSpecificUser', array('class' => 'col-lg-3 control-label'));?>
+			<div class="col-lg-9">
+				<?php echo form_input('inputIdSpecificUser', set_value('inputIdSpecificUser'), 'class="form-control"');?>
+			</div>
 		</div>
 	</div>
 </div>
+
+<button type="submit" class="btn btn-success">SEARCH SPECIFIC USER</button>
+
+<?php echo form_close();?>

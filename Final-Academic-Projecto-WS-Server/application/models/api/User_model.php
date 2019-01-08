@@ -31,7 +31,7 @@ class User_model extends CI_Model {
 
     function getUsers()
     {
-        $this->db->select("u.name, u.email");
+        $this->db->select("u.id,u.name, u.email");
         $this->db->from('User as u');
         
         $query = $this->db->get();
@@ -44,13 +44,12 @@ class User_model extends CI_Model {
     }
 
     function getUser($id)
-    {   
-        $this->db->select("u.id_profile, u.id_name, u.email, , u.birthdate, u.status");
+    {
+        $this->db->select("u.id, u.id_profile, u.name, u.email, u.password, u.birthdate, u.status");
+
         $this->db->from('User as u');
 
         $this->db->where('u.id', $id);
-        
-        $this->db->group_by('u.name');
         
         $query = $this->db->get();
 
@@ -87,8 +86,18 @@ class User_model extends CI_Model {
 
         return $ret = 0;
     }
+//**** ADD FRIEND MODEL monkaS doesn't work */
+    function addFriend($id_friend, $id_user)
+    {
+        $addFriend = array (
+            'user_id' => $id_user,
+            'friend_id' => $id_friend
+        );
 
-    // TODO: NEEDS WORK
+        $ret = $this->db->insert('User_has_Friend', $addFriend);
+        return $ret = 0;
+    }
+
 	public function editUser($id_user, $id_profile, $name, $email, $password)
 	{
 		$this->db->update('User');
@@ -96,7 +105,7 @@ class User_model extends CI_Model {
 		$this->db->set('user.name = '.$name.'');
 		$this->db->set('user.email = '.$email.'');
 		$this->db->set('user.password = '.$password.'');
-		$this->db->where('u.id = '.$id_user.'');
+		$this->db->where('User.id = '.$id_user.'');
 
 		return $ret = 0;
 	}

@@ -22,7 +22,7 @@ class Book_model extends CI_Model {
 
     function addBook($book, $genders)
     {
-        $ret = $this->db->insert('book', $book);
+        $ret = $this->db->insert('Book', $book);
         if (!$ret)
             return -1;
 
@@ -42,30 +42,18 @@ class Book_model extends CI_Model {
         return $book_id;
     }
 
-    function getMovies($id = 0)
+    function getBooks()
     {
-        $this->db->select("m.id, m.photo, m.title, m.year, m.description,
-            m.imdb_id, m.user_id, u.name,
-            group_concat(distinct g.name) as genders,
-            ifnull(round(avg(r.rating), 1), '') as rating", FALSE);
-        $this->db->from('movie as m');
-        $this->db->join('users as u', 'u.id=m.user_id');
-        $this->db->join('rating as r', 'r.movie_id=m.id', 'LEFT');
-        $this->db->join('movie_has_gender as mh', 'm.id=mh.movie_id', 'LEFT');
-        $this->db->join('gender as g', 'g.id=mh.gender_id', 'LEFT');
+		$this->db->select("b.id, b.name, b.author, b.description ,b.isbn, b.cover");
+		$this->db->from("Book as b");
 
-        if ($id != 0)
-            $this->db->where('m.id', $id);
+		$query = $this->db->get();
 
-        $this->db->group_by('m.id, m.photo, m.title, m.year, m.description, m.imdb_id, m.user_id, u.name ');
-        $query = $this->db->get();
-        // echo $this->db->last_query(); exit();
+		$books = array();
+		foreach ($query->result() as $t)
+			$books[] = (array) $t;
 
-        $movies = array();
-        foreach ($query->result() as $t)
-            $movies[] = (array) $t;
-
-        return $movies;
+		return $books;
     }
 
 	// TODO: NEEDS WORK
@@ -80,5 +68,26 @@ class Book_model extends CI_Model {
 
 		return $ret = 0;
 	}
+/** alzheimer */
+    function setOwned($id_user, $id_book)
+    {
+        $setowned = array (
+            'user_id' => $id_user,
+            'book_id' => $id_book
+        );
 
+        $ret = $this->db->insert('User_has_Book', $setowned);
+        return $ret = 0;
+    }
+
+    function setWhished($id_user, $id_book)
+    {
+        $setwhished = array (
+            'user_id' => $id_user,
+            'book_id' => $id_book
+        );
+
+        $ret = $this->db->insert('User_has_Whished_Book', $setwhished);
+        return $ret = 0;
+    }
 }

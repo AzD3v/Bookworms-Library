@@ -43,10 +43,10 @@ class Users extends CI_Controller
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 	}
 
-	function getUser($id = 0)
+	function getUser()
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. ($id!=0 ? 'id/'.$id : ''));
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. 'id_user/1');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {
@@ -59,14 +59,112 @@ class Users extends CI_Controller
 			}
 		}
 
-		$data = array(
+		$data = array (
 			'users' => json_decode($response, true)
 		);
 
 		$this->load->view('geral/header');
 		$this->load->view('users/getuser', $data);
 		$this->load->view('geral/footer');
+	}
 
+	function addFriend()
+	{
+		$response = file_get_contents($this->api_url_users. '/getuser/'. 'id_user/1');
+		$data = array(
+			'users' => json_decode($response,TRUE)
+		);
+		$this->load->view('geral/header.php');
+		$this->load->view('users/add_friend',$data);
+		$this->load->view('geral/footer.php');
+	}
+
+	function validate_addFriend()
+	{
+        $this->form_validation->set_rules('inputIdUser','IdUser','required');
+        $this->form_validation->set_rules('inputFriend','Friend','required');
+
+        if($this->form_validation->run()===true)
+        {
+			$post_data = array(
+
+                'id_user' => $this->input->post('inputIdUser'),
+				'id_friend' => $this->input->post('inputFriend'),
+
+			);
+		
+			$this->addFriend_form($post_data);
+		}
+		else
+		{
+			$this->addFriend();
+		}
+	}
+
+	function addFriend_form($post_data)
+    {
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users . '/addfriend/');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
+		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+		$response = curl_exec($con);
+		
+		if (!curl_errno($con))
+		{
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE))
+			{
+				case 201: break;
+				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
+			}
+	
+			$data = array(
+				'message' => $response
+			);
+			$this->load->view('users/add_friend_success',$data);		
+		}
+	}
+
+	function validateSpecificUserSearch()
+	{
+		$this->form_validation->set_rules('inputIdSpecificUser','id', 'required');
+
+		if ($this->form_validation->run() === TRUE) {
+
+			$id = $this->input->post('inputIdSpecificUser');
+
+			$this->getSpecificUser($id);
+
+		}
+
+		else
+		{
+			$this->getUser();
+		}
+	}
+
+	function getSpecificUser($id)
+	{
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_users. '/getuser/'. 'id_user/1/' .'id/'.$id);
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($con);
+		if (!curl_errno($con)){
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE)){
+				case 200: break;
+				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
+			}
+		}
+
+		curl_close($con);
+
+		$data = array(
+			'user' => json_decode($response, true)
+		);
+
+		$this->load->view('geral/header');
+		$this->load->view('users/getspecificuser', $data);
+		$this->load->view('geral/footer');
 	}
 
 	function addUser($post_data)
@@ -109,6 +207,7 @@ class Users extends CI_Controller
 		$this->form_validation->set_rules('inputStatus','Status','required');
 
 		if ($this->form_validation->run() === TRUE) {
+			
 			$post_data = array (
 				'id_user' => $this->input->post('inputIdUser'),
 				'name' => $this->input->post('inputName'),
@@ -116,7 +215,7 @@ class Users extends CI_Controller
 				'email' => $this->input->post('inputEmail'),
 				'password' => $this->input->post('inputPassword'),
 				'birthdate' => $this->input->post('inputBirth'),
-				'status' => $this->input->post('inputStatus'),
+				'status' => $this->input->post('inputStatus')
 			);
 
 			$this->addUser($post_data);
@@ -128,7 +227,6 @@ class Users extends CI_Controller
 
 	}
 
-	// TODO: ALL EDIT METHODS NEED WORK
 	function editUser($post_data)
 	{
 		$con = curl_init();

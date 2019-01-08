@@ -36,6 +36,7 @@
 			margin: auto;
 			padding: 30px;
 			text-align: center;
+			text-transform: uppercase;
 		}
 
 		code {
