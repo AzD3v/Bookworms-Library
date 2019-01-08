@@ -29,6 +29,7 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 			</div>
 		</div>
 	</div>
+</div>
 
 <div class="row">
 	<div class="col-lg-6">
@@ -45,6 +46,7 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 			</div>
 		</div>
 	</div>
+</div>
 
 <div class="row">
 	<div class="col-lg-6">
@@ -108,8 +110,12 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 				<?php echo form_input('inputStatus', set_value('inputStatus'), 'class="form-control"');?>
 			</div>
 		</div>
+		
 </div> 
 
+
+
 	<button type="submit" class="btn btn-success">ADD NEW USER!</button>
+</div>
 
 <?php echo form_close(); ?>

@@ -194,7 +194,9 @@ class Users extends CI_Controller
 
 	function addUserForm()
 	{
+		$this->load->view('geral/header');
 		$this->load->view('users/add_user_form');
+		$this->load->view('geral/footer');
 	}
 
 	function validateNewUser()
