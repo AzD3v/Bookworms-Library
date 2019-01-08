@@ -55,7 +55,7 @@ class Book extends REST_Controller
 		$genders = $this->post('gender_id');
 
 		if ($book['name'] == '' || $book['author'] == '' ||
-			$book['isbn'] == '' || $book == 'reader_id' || $book == 'description') {
+			$book['isbn'] == '' || $book['reader_id'] == '' || $book['description'] == '') {
 			
 			$message = [
 				'id' => -1,
