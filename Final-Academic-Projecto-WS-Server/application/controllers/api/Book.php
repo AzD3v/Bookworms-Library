@@ -127,3 +127,4 @@ class Book extends REST_Controller
 		}
 
 }
+}

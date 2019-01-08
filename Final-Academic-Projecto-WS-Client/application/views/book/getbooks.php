@@ -10,24 +10,20 @@
        <table class="table table-bordered table-hover">
          <thead>
              <th>Id</th>
-             <th>Rating</th>
-             <th>Title</th>
-             <th>Year</th>
+             <th>Book's name</th>
+             <th>Author</th>
              <th>Description</th>
-             <th>Gender</th>
-             <th>User</th>
-
+             <th>Isbn</th>
+             <th>Cover</th>
          </thead>
-		   <?php var_dump($books); ?>
          <?php foreach ($books as $b) { ?>
            <tr>
                <td><?php echo $b['id'];?></td>
-               <td><?php echo $b['rating'];?></td>
-               <td><?php echo $b['title'];?></td>
-               <td><?php echo $b['year'];?></td>
+               <td><?php echo $b['name'];?></td>
+               <td><?php echo $b['author'];?></td>
                <td><?php echo $b['description'];?></td>
-               <td><?php echo $b['genders'];?></td>
-               <td><?php echo $b['user_id'];?></td>
+               <td><?php echo $b['isbn'];?></td>
+               <td><?php echo $b['cover'];?></td>
            </tr>
          <?php } ?>
        </table>

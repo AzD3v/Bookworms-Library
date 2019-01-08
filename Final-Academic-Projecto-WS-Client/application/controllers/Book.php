@@ -47,7 +47,7 @@ class Book extends CI_Controller
 	function getBooks()
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/getbooks/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbooks/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {
