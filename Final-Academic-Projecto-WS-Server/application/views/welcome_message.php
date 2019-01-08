@@ -69,8 +69,10 @@
 		</div>
 	</div>
 
+	<h1>Books</h1>
+	
 	<div class="container">
-		<h3>addBook_post</h3>
+		<h3>addBook</h3>
 		<p><strong>Parameters: </strong>name - required; author - required; description - required; isbn - required;
 			reader_id - required; cover - optional</p>
 		<p><strong>Type of data: </strong>name - string; author - string; description - text; isbn - string;
@@ -82,13 +84,97 @@
 	<hr>
 
 	<div class="container">
-		<h3>getBooks_get</h3>
+		<h3>getBooks</h3>
 		<p><strong>Parameters: </strong>id_user - optional, it depends on objective. If an ID is not given, all approved books
 		are returned. If the user is an admin, it returns all approved and unapproved books</p>
 		<p><strong>Type of data: </strong>id_user - int</p>
 		<p><strong>HTTP Method: </strong>GET</p>
 		<p><strong>Method Return: </strong>List of books</p>
 	</div>
+
+	<hr>
+
+	<div class="container">
+		<h3>setOwned</h3>
+		<p><strong>Parameters: </strong>id_user - required; id_book - required</p>
+		<p><strong>Type of data: </strong>id_user - int; id_book - int</p>
+		<p><strong>HTTP Method: </strong>POST</p>
+		<p><strong>Method Return: </strong>A message saying that the book is now Owned</p>
+	</div>
+
+	<hr>
+
+	<div class="container">
+		<h3>setWished</h3>
+		<p><strong>Parameters: </strong>id_user - required; id_book - required</p>
+		<p><strong>Type of data: </strong>id_user - int; id_book - int</p>
+		<p><strong>HTTP Method: </strong>POST</p>
+		<p><strong>Method Return: </strong>A message saying that the book is now Wished</p>
+	</div>
+
+	<hr>
+
+	<div class="container">
+		<h3>setRead</h3>
+		<p><strong>Parameters: </strong>id_user - required; id_book - required</p>
+		<p><strong>Type of data: </strong>id_user - int; id_book - int</p>
+		<p><strong>HTTP Method: </strong>POST</p>
+		<p><strong>Method Return: </strong>A message saying that the book is now Read</p>
+	</div>
+		
+	<hr>
+
+	<h1>Users</h1>
+
+	<div class="container">
+		<h3>getUser</h3>
+		<p><strong>Parameters: </strong>id_user - required; id - optional</p>
+		<p><strong>Type of data: </strong>id_user - int; id - int</p>
+		<p><strong>HTTP Method: </strong>GET</p>
+		<p><strong>Method Return: </strong>Returns the list of all users or if given the userID, the information of this user.</p>
+	</div>
+
+	<hr>
+
+	<div class="container">
+		<h3>addUser</h3>
+		<p><strong>Parameters: </strong>id_user - required; id_profile - required; name - required; email - required; password - required; birthdate - required; status - required; </p>
+		<p><strong>Type of data: </strong>id_user - int; id_profile - int; name - string; email - string; password - string; birthdate - date; status - required</p>
+		<p><strong>HTTP Method: </strong>GET</p>
+		<p><strong>Method Return: </strong>A message of a User Created</p>
+	</div>
+	
+	<hr>
+
+	<div class="container">
+		<h3>changeUserStatus</h3>
+		<p><strong>Parameters: </strong>id_user - required; status - required; </p>
+		<p><strong>Type of data: </strong>id_user - int; id_profile - string;</p>
+		<p><strong>HTTP Method: </strong>POST</p>
+		<p><strong>Method Return: </strong>A message of a User with the status changed</p>
+	</div>
+
+	<hr>
+
+	<div class="container">
+		<h3>editUser</h3>
+		<p><strong>Parameters: </strong>id_user - required; id_profile - required; name - required; email - required; password - required;  </p>
+		<p><strong>Type of data: </strong>id_user - int; id_profile - int; name - string; email - string, password - string</p>
+		<p><strong>HTTP Method: </strong>POST</p>
+		<p><strong>Method Return: </strong>A edited User</p>
+	</div>
+
+	<hr>
+
+	<div class="container">
+		<h3>addFriend</h3>
+		<p><strong>Parameters: </strong>id_user - required; id_friend - required; </p>
+		<p><strong>Type of data: </strong>id_user - int; id_friend - int;</p>
+		<p><strong>HTTP Method: </strong>POST</p>
+		<p><strong>Method Return: </strong>Adds an user to a friendsList</p>
+	</div>
+
+
 
 </div>
 

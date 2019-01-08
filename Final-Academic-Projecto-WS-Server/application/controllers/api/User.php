@@ -90,7 +90,7 @@ class User extends REST_Controller {
                     $message = [
                         'id' => -2,
                         'message' =>
-                        'The user must be an Admin to add an user, or the User who requested
+                        'The user must be an Admin to GET an user, or the User who requested
                         must be the same user'
                     ];
                         $this->set_response($message, REST_CONTROLLER::HTTP_ERROR);
@@ -284,7 +284,7 @@ class User extends REST_Controller {
         }
         
     }
-/***** monkaS welp please why this no work :( */
+
     function addFriend_post()
     {
         $id_user = $this->post('id_user');
