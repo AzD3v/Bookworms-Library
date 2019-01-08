@@ -44,8 +44,9 @@ class User_model extends CI_Model {
     }
 
     function getUser($id)
-    {   
-        $this->db->select("u.id_profile, u.name, u.email, u.password , u.birthdate, u.status");
+    {
+        $this->db->select("u.id, u.id_profile, u.name, u.email, u.password, u.birthdate, u.status");
+
         $this->db->from('User as u');
 
         $this->db->where('u.id', $id);

@@ -130,9 +130,8 @@ class Users extends CI_Controller
 		$this->form_validation->set_rules('inputIdSpecificUser','id', 'required');
 
 		if ($this->form_validation->run() === TRUE) {
-			
+
 			$id = $this->input->post('inputIdSpecificUser');
-			
 
 			$this->getSpecificUser($id);
 
@@ -164,7 +163,7 @@ class Users extends CI_Controller
 		);
 
 		$this->load->view('geral/header');
-		$this->load->view('users/getuser', $data);
+		$this->load->view('users/getspecificuser', $data);
 		$this->load->view('geral/footer');
 	}
 
