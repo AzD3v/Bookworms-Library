@@ -100,7 +100,7 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 	</div>
 </div>
 
-<!-- <div class="row">
+ <div class="row">
 	<div class="col-lg-6">
 		<div class="form-group row">
 			<?php echo form_label('Status', 'inputStatus', array('class' => 'col-lg-3 control-label'));?>
@@ -108,7 +108,7 @@ echo form_open("Users/validateNewUser",'role="form" class="form-horizontal"');?>
 				<?php echo form_input('inputStatus', set_value('inputStatus'), 'class="form-control"');?>
 			</div>
 		</div>
-	</div> -->
+</div> 
 
 	<button type="submit" class="btn btn-success">ADD NEW USER!</button>
 
