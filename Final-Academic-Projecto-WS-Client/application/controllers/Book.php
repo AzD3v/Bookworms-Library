@@ -87,7 +87,7 @@ class Book extends CI_Controller
 
 	function setOwned()
 	{
-		$response = file_get_contents($this->api_url_books. '/getBooks/'. 'id_user/1');
+		$response = file_get_contents($this->api_url_books. '/getBooks/');
 		$data = array(
 			'books' => json_decode($response,TRUE)
 		);
@@ -141,7 +141,7 @@ class Book extends CI_Controller
 
 	function setWished()
 	{
-		$response = file_get_contents($this->api_url_books. '/getBooks/'. 'id_user/1');
+		$response = file_get_contents($this->api_url_books. '/getBooks/');
 		$data = array(
 			'books' => json_decode($response,TRUE)
 		);
@@ -196,7 +196,7 @@ class Book extends CI_Controller
 
 	function setRead()
 	{
-		$response = file_get_contents($this->api_url_books. '/getBooks/'. 'id_user/1');
+		$response = file_get_contents($this->api_url_books. '/getBooks/');
 		$data = array(
 			'books' => json_decode($response,TRUE)
 		);
@@ -247,7 +247,7 @@ class Book extends CI_Controller
 			$this->load->view('book/read_book_success',$data);		
 		}
 	}
-	// ****  Rate Book ****
+
 	function rateBook()
     {
 		$response = file_get_contents($this->api_url_books. '/getBooks/');
@@ -295,6 +295,60 @@ class Book extends CI_Controller
 
 		$result = json_decode($response,TRUE);
 		echo "Book ".$result['book_id']." was rated ";
+	}
+
+	function bookValidate()
+	{
+		$response = file_get_contents($this->api_url_books. '/getBooks/');
+		$data = array(
+			'books' => json_decode($response,TRUE)
+		);
+		$this->load->view('geral/header.php');
+		$this->load->view('book/book_v',$data);
+		$this->load->view('geral/footer.php');
+	}
+
+	function validate_bookValidate()
+	{
+        $this->form_validation->set_rules('inputIdUser','IdUser','required');
+        $this->form_validation->set_rules('inputBook','Book','required');
+
+        if($this->form_validation->run()===true)
+        {
+			$post_data = array(
+                'id_admin' => $this->input->post('inputIdUser'),
+				'id_book' => $this->input->post('inputBook'),
+			);
+			$this->bookValidate_form($post_data);
+		}
+		else
+		{
+			$this->setOwned();
+		}
+	}
+
+	function bookValidate_form($post_data)
+    {
+		$con = curl_init();
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/bookValidate/');
+		curl_setopt($con, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($con, CURLOPT_POST, TRUE); // para indiciar que vamos mandar um post
+		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
+		$response = curl_exec($con);
+		
+		if (!curl_errno($con))
+		{
+			switch ($http_code = curl_getinfo($con, CURLINFO_HTTP_CODE))
+			{
+				case 201: break;
+				default: echo "Unexpected HTTP code: ", $http_code, "\n" . $response;
+			}
+	
+			$data = array(
+				'message' => $response
+			);
+			$this->load->view('book/book_v_success',$data);		
+		}
 	}
 	
 	// ****  Add Book ****

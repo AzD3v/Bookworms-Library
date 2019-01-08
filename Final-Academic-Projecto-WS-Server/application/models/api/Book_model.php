@@ -116,4 +116,13 @@ class Book_model extends CI_Model {
         $ret = $this->db->insert('User_has_Read_Book', $setread);
         return $ret = 0;
     }
+
+    function bookValidate($book_id, $admin_id)
+	{
+        $this->db->update('Book');
+		$this->db->set('Book.admin_id = '.$admin_id.'');
+		$this->db->where('Book.id = '.$book_id.'');
+
+		return $ret = 0;
+    }
 }
