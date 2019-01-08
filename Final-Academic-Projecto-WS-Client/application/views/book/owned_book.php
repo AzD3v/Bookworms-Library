@@ -35,7 +35,7 @@
                     <?php
                         foreach($books as $b) 
                         {
-                            echo '<option value="'.$b['id'].'">'.$b['title'].'</option>';
+                            echo '<option value="'.$b['id'].'">'.$b['name'].'</option>';
                         }
                     ?>
                 </select>
