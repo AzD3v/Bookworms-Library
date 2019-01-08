@@ -72,15 +72,6 @@
 		</div>
     </div>
 
-<<<<<<< HEAD
-    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/setOwned">Set Owned</a><br>
-    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/setWished">Set Wished</a><br>
-    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/setRead">Set Read</a><br>
-    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/rateBook">Rate Book</a><br>
-    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/getBooks">Get Books</a><br>
-    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/addBook">Add Book</a><br>
-    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/addBook">Edit Book</a><br>
-=======
     <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/setOwned/">Set Owned</a><br>
     <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/setWished/">Set Wished</a><br>
     <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/setRead/">Set Read</a><br>
@@ -90,7 +81,6 @@
     <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/adduserform/">Add User</a><br>
      <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/users/getuser/">Get User</a><br>
     
->>>>>>> dev-miguel
     
 
 </body>
