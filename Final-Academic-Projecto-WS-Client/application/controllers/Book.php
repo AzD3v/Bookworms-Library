@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * @property string api_url_book
+ * @property string api_url_books
  */
 
 class Book extends CI_Controller
@@ -34,7 +34,7 @@ class Book extends CI_Controller
 	{
 		parent::__construct();
 
-		$this->api_url_book = 'http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
+		$this->api_url_books = 'http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Server/index.php/api/book';
 		// Helpers
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -47,7 +47,7 @@ class Book extends CI_Controller
 	function getBooks()
 	{
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/getbooks/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/getbooks/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		$response = curl_exec($con);
 		if (!curl_errno($con)) {
@@ -201,7 +201,7 @@ class Book extends CI_Controller
 	{
 
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/addbook/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/addbook/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($con, CURLOPT_POST, TRUE);
 		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
@@ -270,6 +270,10 @@ class Book extends CI_Controller
 					);
 				}
 			}
+			elseif(empty($_FILES['bookCover']))
+			{
+				echo "test";
+			}
 			else
 			{
 				echo "Error while uploading cover!";
@@ -290,7 +294,7 @@ class Book extends CI_Controller
 	{
 
 		$con = curl_init();
-		curl_setopt($con, CURLOPT_URL, $this->api_url_book . '/editbook/');
+		curl_setopt($con, CURLOPT_URL, $this->api_url_books . '/editbook/');
 		curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($con, CURLOPT_POST, TRUE);
 		curl_setopt($con, CURLOPT_POSTFIELDS, http_build_query($post_data));
