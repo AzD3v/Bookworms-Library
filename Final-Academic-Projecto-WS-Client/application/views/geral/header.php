@@ -15,11 +15,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><?php $l='http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php'?>
-          <a class="nav-link" href=<?php echo $l.'/book_index.php'; ?>>Book Methods</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href=<?php echo $l.'/user_index.php'; ?>>User Methods</a>
+        <li class="nav-item"><?php $l='http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/'?>
+          <a class="nav-link" href=<?php echo $l; ?>>Methods</a>
         </li>
       </ul>
       

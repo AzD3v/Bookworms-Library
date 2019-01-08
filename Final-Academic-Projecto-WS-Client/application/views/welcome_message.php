@@ -67,10 +67,19 @@
 		<div class="jumbotron jumbotron-fluid">
 			<div class="container">
 				<h1 class="display-1">Welcome to BookWorms!</h1>
-				<p class="lead">The place where all avid book readers should be!</p>
+				<p class="lead"> Methods links</p>
 			</div>
 		</div>
     </div>
+
+    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/setOwned">Set Owned</a><br>
+    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/setWished">Set Wished</a><br>
+    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/setRead">Set Read</a><br>
+    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/rateBook">Rate Book</a><br>
+    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/getBooks">Get Books</a><br>
+    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/addBook">Add Book</a><br>
+    <a href="http://localhost/Bookworms-Library/Final-Academic-Projecto-WS-Client/index.php/book/addBook">Edit Book</a><br>
+    
 
 </body>
 </html>
