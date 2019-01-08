@@ -185,16 +185,16 @@ class Book extends CI_Controller
 		$this->form_validation->set_rules('bookDescription', 'Book Description', 'required');
 		$this->form_validation->set_rules('bookIsbn', 'ISBN (International Standard Book Number) of the book',
 											'required|alpha_numeric');
-		$this->form_validation->set_rules('bookRegister', 'Who is registering this book?', 'required');
+		$this->form_validation->set_rules('readerId', 'Reader ID', 'required');
 
 		if ($this->form_validation->run() === TRUE) {
+
 			$post_data = array(
 				'name' => $this->input->post('bookName'),
 				'author' => $this->input->post('bookAuthor'),
+				'isbn' => $this->input->post('bookIsbn'),
 				'genre_id' => $this->input->post('bookGenreId'),
 				'description' => $this->input->post('bookDescription'),
-				'isbn' => $this->input->post('bookIsbn'),
-				'register' => $this->input->post('bookRegister'),
 				'reader_id' => $this->input->post('readerId'),
 			);
 
