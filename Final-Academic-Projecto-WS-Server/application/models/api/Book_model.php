@@ -80,14 +80,25 @@ class Book_model extends CI_Model {
         return $ret = 0;
     }
 
-    function setWhished($id_user, $id_book)
+    function setWished($id_user, $id_book)
     {
-        $setwhished = array (
+        $setwished = array (
             'user_id' => $id_user,
             'book_id' => $id_book
         );
 
-        $ret = $this->db->insert('User_has_Whished_Book', $setwhished);
+        $ret = $this->db->insert('User_has_Wished_Book', $setwished);
+        return $ret = 0;
+    }
+
+    function setRead($id_user, $id_book)
+    {
+        $setread = array (
+            'user_id' => $id_user,
+            'book_id' => $id_book
+        );
+
+        $ret = $this->db->insert('User_has_Read_Book', $setread);
         return $ret = 0;
     }
 }

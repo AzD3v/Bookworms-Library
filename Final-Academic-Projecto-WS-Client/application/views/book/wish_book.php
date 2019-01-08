@@ -1,10 +1,10 @@
-<?php echo form_open("book/validate_setWhished",'role="form" class="form-horizontal"');?>
+<?php echo form_open("book/validate_setWished",'role="form" class="form-horizontal"');?>
 
 <link rel="stylesheet" href="../../../assets/css/geral.css">
 
 <div class="row">
     <div class="col col-lg-12">
-        <h2>Whish a Book!</h2>
+        <h2>Wish a Book!</h2>
         <br>
     </div>
 </div>
@@ -48,7 +48,7 @@
     <div class="col-lg-12">
         <p class="text-center">
             <br>
-            <button type="submit" class="btn btn-primary">Whish Book</button>
+            <button type="submit" class="btn btn-primary">Wish Book</button>
         </p>
     </div>
 </div>
