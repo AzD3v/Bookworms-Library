@@ -2,50 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b793993-2b29-414d-b265-be779b69df0c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/controllers/Movieworld.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/clientrest/create_user_form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/clientrest/new_task_form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/clientrest/new_task_form2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/clientrest/tasks.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/clientrest/users.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/movieworld/add_movie_form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/movieworld/add_movie_success.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/movieworld/getmovie.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/movieworld/movies_world_welcome.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/movieworld/viewmovie.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/Movieworld.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Movie.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/models/api/Movie_model.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/clientrest/create_user_form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/clientrest/new_task_form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/clientrest/new_task_form2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/clientrest/tasks.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/clientrest/users.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/clientrest/validate_user_form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/cli/error_404.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/cli/error_db.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/cli/error_exception.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/cli/error_general.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/cli/error_php.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/cli/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/html/error_404.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/html/error_db.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/html/error_exception.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/html/error_general.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/html/error_php.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/html/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/errors/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/geral/footer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/geral/header.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/movieworld/add_movie_form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/movieworld/add_movie_success.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/movieworld/getmovie.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/movieworld/movies_world_welcome.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/movieworld/viewmovie.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/rest_server.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/welcome_message.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/welcome_message.php" beforeDir="false" afterPath="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/welcome_message.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,11 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="689">
-              <caret line="143" column="49" selection-start-line="143" selection-start-column="49" selection-end-line="143" selection-end-column="49" />
+            <state relative-caret-position="171">
+              <caret line="34" column="16" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/welcome_message.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="339">
+              <caret line="84" column="91" selection-start-line="84" selection-start-column="91" selection-end-line="84" selection-end-column="91" />
             </state>
           </provider>
         </entry>
@@ -99,7 +66,6 @@
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/models/api/Book_model.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/getbooks.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/welcome_message.php" />
-        <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/welcome_message.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/users/add_user_form.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/add_book_form.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/book/edit_book_form.php" />
@@ -111,6 +77,7 @@
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/users/getspecificuser.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Client/application/views/users/getuser.php" />
         <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php" />
+        <option value="$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/welcome_message.php" />
       </list>
     </option>
   </component>
@@ -149,6 +116,13 @@
               <item name="Final-Academic-Projecto-WS-Server" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Bookworms-Library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bookworms-Library" type="462c0819:PsiDirectoryNode" />
+              <item name="Final-Academic-Projecto-WS-Server" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -161,6 +135,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -194,17 +169,18 @@
       <workItem from="1546813176850" duration="8469000" />
       <workItem from="1546895648651" duration="11742000" />
       <workItem from="1546913046243" duration="171000" />
-      <workItem from="1546913234509" duration="8447000" />
+      <workItem from="1546913234509" duration="9926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39641000" />
+    <option name="totallyTimeSpent" value="41120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24090908" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24090908" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -274,13 +250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
           <caret line="51" column="25" lean-forward="true" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/welcome_message.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -390,8 +359,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/controllers/api/Book.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="689">
-          <caret line="143" column="49" selection-start-line="143" selection-start-column="49" selection-end-line="143" selection-end-column="49" />
+        <state relative-caret-position="171">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Final-Academic-Projecto-WS-Server/application/views/welcome_message.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="84" column="91" selection-start-line="84" selection-start-column="91" selection-end-line="84" selection-end-column="91" />
         </state>
       </provider>
     </entry>

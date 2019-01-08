@@ -118,7 +118,7 @@ class Book extends REST_Controller
 		);
 
 	}
-/**  alzheimer */
+
 	function setOwned_post()
 	{
 		$id_user = $this->post('id_user');
@@ -213,4 +213,3 @@ class Book extends REST_Controller
 		}
 	}
 }
-/** O FIX DA DORES DE CABEÇA DO  MIGUEL */

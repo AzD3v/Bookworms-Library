@@ -54,6 +54,10 @@
 			margin: 0 15px 0 15px;
 		}
 
+		h3, p, hr {
+			color: #fff;
+		}
+
 	</style>
 </head>
 <body>
@@ -64,6 +68,28 @@
 			<h1 class="display-1">Welcome to BookWorms!</h1>
 		</div>
 	</div>
+
+	<div class="container">
+		<h3>addBook_post</h3>
+		<p><strong>Parameters: </strong>name - required; author - required; description - required; isbn - required;
+			reader_id - required; cover - optional</p>
+		<p><strong>Type of data: </strong>name - string; author - string; description - text; isbn - string;
+			reader_id - int; cover - longtext</p>
+		<p><strong>HTTP Method: </strong>POST</p>
+		<p><strong>Method Return: </strong>Message of add book success</p>
+	</div>
+
+	<hr>
+
+	<div class="container">
+		<h3>getBooks_get</h3>
+		<p><strong>Parameters: </strong>id_user - optional, it depends on objective. If an ID is not given, all approved books
+		are returned. If the user is an admin, it returns all approved and unapproved books</p>
+		<p><strong>Type of data: </strong>id_user - int</p>
+		<p><strong>HTTP Method: </strong>GET</p>
+		<p><strong>Method Return: </strong>List of books</p>
+	</div>
+
 </div>
 
 </body>
