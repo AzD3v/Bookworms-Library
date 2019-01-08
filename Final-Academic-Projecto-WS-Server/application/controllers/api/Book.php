@@ -83,7 +83,7 @@ class Book extends REST_Controller
 		}
 
 	}
-/** FALTA AS VALIDAÇOES DA PARTE DA API AQUI !!! */
+
 	function addRate_post()
 	{
 		$book = array(
@@ -112,7 +112,7 @@ class Book extends REST_Controller
 
 		else
 		{
-			$ret = $this->book_model->setOwned($id_user, $id_book);
+			$ret = $this->book_model->setOwned_post($id_user, $id_book);
 
 			if($ret == 0)
 			{   
@@ -126,38 +126,7 @@ class Book extends REST_Controller
 			}
 		}
 
-	function setWhished_post()
-	{
-	$id_user = $this->post('id_user');
-	$id_book = $this->post('id_book');
-
-	if ($id_user == '')
-	{
-		$message = [
-			'id' => -2,
-			'message' => 'The required fields were not introduced or they were impossible to execute'
-		];
-		$this->set_response($message, REST_CONTROLLER::HTTP_NOT_FOUND);
-		return;
 	}
-
-	else
-	{
-		$ret = $this->book_model->setWhished($id_user, $id_book);
-
-		if($ret == 0)
-		{   
-				$message = [
-			'id' => 0,
-			'message' => 'Book added with sucess to user list'
-			];
-
-			$this->set_response($message, REST_CONTROLLER::HTTP_CREATED);
-			return;
-		}
-	}
-
-}
 }
 }
 /** O FIX DA DORES DE CABEÇA DO  MIGUEL */
