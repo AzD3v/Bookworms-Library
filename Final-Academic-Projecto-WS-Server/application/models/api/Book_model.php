@@ -79,4 +79,15 @@ class Book_model extends CI_Model {
         $ret = $this->db->insert('User_has_Book', $setowned);
         return $ret = 0;
     }
+
+    function setWhished($id_user, $id_book)
+    {
+        $setwhished = array (
+            'user_id' => $id_user,
+            'book_id' => $id_book
+        );
+
+        $ret = $this->db->insert('User_has_Whished_Book', $setwhished);
+        return $ret = 0;
+    }
 }
